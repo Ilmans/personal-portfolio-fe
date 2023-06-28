@@ -1,6 +1,6 @@
 import React from "react";
 
-export const TwitterIcon = (props: any) => {
+export const TwitterIcon = <T,>(props: T) => {
   return (
     <svg
       {...props}
