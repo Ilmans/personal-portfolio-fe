@@ -1,5 +1,7 @@
 {
   "name": "my-portfolio",
+  "author": "Ilman Sunanuddin",
+  "description": "My portfolio website, but this is open source",
   "version": "0.1.0",
   "private": true,
   "scripts": {
