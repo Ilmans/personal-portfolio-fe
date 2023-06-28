@@ -1,4 +1,4 @@
-interface Project {
+export interface Project {
   image: string;
   name: string;
   stack: string[];
@@ -27,13 +27,13 @@ const dummyProjects: Project[] = [
   {
     image: "https://loremflickr.com/760/400",
     name: "Social Media Platform for Artists and Creatives",
-    stack: ["Python", "Django", ],
+    stack: ["Python", "Django"],
     url: "https://example.com/social-media",
   },
   {
     image: "https://loremflickr.com/760/400",
     name: "Analytics Dashboard for Data Visualization",
-    stack: ["JavaScript", "React", "Node.js",],
+    stack: ["JavaScript", "React", "Node.js"],
     url: "https://example.com/analytics-dashboard",
   },
   {
@@ -42,7 +42,6 @@ const dummyProjects: Project[] = [
     stack: ["PHP", "Laravel", "MySQL"],
     url: "https://example.com/booking-system",
   },
-  
 ];
 
 export { dummyProjects };
