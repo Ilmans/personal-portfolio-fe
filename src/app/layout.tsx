@@ -1,9 +1,19 @@
-"use client";
 import "./globals.css";
-import { useEffect, useState } from "react";
 import ProfileCard from "../components/ProfileCard";
 import Header from "../components/Header";
 import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: {
+    default: "About - Ilman Sunanuddin",
+    template: "%s - Ilman Sunanuddin",
+  },
+  description:
+    "Welcome to my personal website. Learn more about Ilman Sunanuddin and his work.",
+  icons: {
+    icon: "/favicon.ico",
+  },
+};
 
 export default function RootLayout({ children }) {
   return (
@@ -12,7 +22,7 @@ export default function RootLayout({ children }) {
         <div className="px-6 pt-10 lg:pt-0 lg:px-32 ">
           <Header />
           <main className="flex justify-center gap-4 mt-4">
-            <ProfileCard className="hidden lg:block" />
+            <ProfileCard className="hidden lg:w-2/7 lg:block" />
             {children}
           </main>
           <div className="my-6 text-center font-poppins">

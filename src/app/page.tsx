@@ -24,7 +24,7 @@ const experiences = [
 ];
 export default function Home() {
   return (
-    <div>
+    <div className="lg:w-5/7">
       <Wrapper>
         <div className="flex flex-col justify-center gap-2 lg:flex-row">
           <div className="w-full lg:w-1/2">

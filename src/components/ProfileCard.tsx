@@ -2,7 +2,7 @@ import React from "react";
 import { FacebookIcon, InstagramIcon, TwitterIcon } from "./SocialIcon";
 import Wrapper from "./Wrapper";
 
-function ProfileCard({ className = "" }: { className: any }) {
+function ProfileCard({ className = "border-b-0" }: { className: any }) {
   return (
     <Wrapper className={className}>
       <div className="relative flex justify-center mx-4 my-2">
