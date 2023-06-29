@@ -7,7 +7,7 @@ import Navigation from "./Navigation";
 function Header() {
   const [mobileMenuShow, setMobileMenuShow] = useState<boolean>(false);
   return (
-    <header className="flex items-center justify-between py-5 text-zinc-500 dark:text-zinc-300">
+    <header className="flex items-center justify-between py-5 mb-4 text-zinc-500 dark:text-zinc-300">
       {/* MENU NAVIGATION */}
       <Navigation
         mobileMenuShow={mobileMenuShow}

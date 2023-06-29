@@ -31,7 +31,11 @@ function Navigation({ mobileMenuShow, setMobileMenuShow }: NavigationProps) {
           text={"Portfolio"}
         />
 
-        <NavLi text={"Articles"} />
+        <NavLi
+          active={currentRoute === "/articles"}
+          url="/articles"
+          text={"Articles"}
+        />
         <NavLi text={"Hire me!"} />
       </ul>
       <ProfileCard className="block mx-6 shadow-2xl bg-zinc-50 dark:bg-zinc-800 lg:hidden" />

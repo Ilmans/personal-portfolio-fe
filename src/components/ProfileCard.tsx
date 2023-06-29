@@ -38,9 +38,12 @@ function ProfileCard({ className = "border-b-0" }: { className: any }) {
         <button className="px-16 py-2 font-semibold text-black transition-all duration-75 bg-teal-400 rounded-full hover:bg-teal-800 hover:text-white">
           Hire Me!
         </button>
-        <button className="px-12 py-2 font-semibold text-white transition-all duration-75 rounded-full bg-zinc-700 hover:bg-teal-800 hover:text-white">
+        <a
+          
+          href="https://drive.google.com/file/d/1ZQbpRj5sQ7519SawlO0c5cSjCF-gXCWK/view?usp=drive_link"
+          className="block px-12 py-2 font-semibold text-white transition-all duration-75 rounded-full bg-zinc-700 hover:bg-teal-800 hover:text-white">
           Download CV
-        </button>
+        </a>
       </div>
     </Wrapper>
   );
