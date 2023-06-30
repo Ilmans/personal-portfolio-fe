@@ -1,4 +1,3 @@
-import Image from "next/image";
 import React from "react";
 import Jumbotron from "../../components/Jumbotron";
 import Wrapper from "../../components/Wrapper";
@@ -8,9 +7,11 @@ import {
   LinkedInIcon,
   TwitterIcon,
 } from "../../components/SocialIcon";
+import { formateDateForDisplay } from "../helpers";
+import Link from "next/link";
 
 const getArticles = async () => {
-  const res = await fetch("https://jsonplaceholder.typicode.com/posts?limit=6");
+  const res = await fetch("http://localhost:3120/articles");
   return res.json();
 };
 async function page() {
@@ -26,16 +27,26 @@ async function page() {
           description="All of my long-form thoughts on programming, design, and more, collected in chronological order."
         />
         <div className="border-l mt-14 border-zinc-700 ">
-          {articles.map((article: any) => (
+          {articles.data.map((article: any) => (
             <div className="flex items-start">
               <div className="w-1/4 py-8 ml-8 ">
                 <p className="text-xs text-zinc-400 font-poppins">
-                  20 April 2023
+                  {formateDateForDisplay(article.createdAt)}
                 </p>
               </div>
-              <div className="w-3/4 p-6 space-y-2 transition-all duration-150 ease-in-out cursor-pointer shadow-full rounded-xl dark:shadow-none hover:bg-zinc-200 dark:hover:bg-zinc-800 font-poppins">
+              <Link
+                href={`/article/${article.slug}`}
+                className="w-3/4 p-6 space-y-2 transition-all duration-150 ease-in-out cursor-pointer shadow-full rounded-xl dark:shadow-none hover:bg-zinc-200 dark:hover:bg-zinc-800 font-poppins">
                 <h1 className="text-xl leading-6">{article.title}</h1>
-                <p className="text-sm text-zinc-400">{article.body}</p>
+                <div className="text-sm text-zinc-500">
+                  Filled by {article.author.full_name} in{" "}
+                  <span className="px-2 text-xs rounded-lg text-zinc-900 bg-zinc-400">
+                    {article.category.name}
+                  </span>
+                </div>
+                <p className="text-sm text-zinc-400">
+                  {article.body.slice(1, 150)}
+                </p>
                 <p className="flex items-center gap-2 text-sm text-teal-400">
                   Read Articles{" "}
                   <svg
@@ -52,7 +63,7 @@ async function page() {
                     />
                   </svg>
                 </p>
-              </div>
+              </Link>
             </div>
           ))}
         </div>

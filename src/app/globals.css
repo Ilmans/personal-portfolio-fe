@@ -36,10 +36,16 @@
 }
 
 .markdown h2 {
-  color : red;
-  font-size : 200px;
+ 
+  font-size : 1.125rem;
+  font-weight: 800;
 }
 
+.codeStyle {
+ 
+  border-radius: 15px;
+  padding: 4px;
+}
 
 
 
