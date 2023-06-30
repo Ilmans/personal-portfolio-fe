@@ -31,7 +31,7 @@ function Projects() {
               ))}
             </div>
             <Link
-              className="flex items-center gap-1 mt-2 text-xs hover:text-teal-400"
+              className="flex items-center gap-1 mt-2 text-xs hover:text-teal-300"
               href={""}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"

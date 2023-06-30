@@ -3,6 +3,7 @@ import React from "react";
 import Article from "./Article";
 import { formateDateForDisplay } from "../../helpers";
 import { TwitterIcon } from "../../../components/SocialIcon";
+import Toc from "./Toc";
 
 const getArticleBySlug = async (slug: string) => {
   const res = await fetch("http://localhost:3120/article/" + slug);
@@ -35,10 +36,10 @@ async function page({ params }: { params: { slug: string } }) {
               </svg>
             </div>
           </div>
-          
+
           <div className="w-4/5 px-8 font-poppins">
             <div className="-space-y-4">
-              <p className="pb-4 text-sm text-teal-400 uppercase font-semibol">
+              <p className="pb-4 text-sm text-teal-300 uppercase font-semibol">
                 {article.data.category.name}
               </p>
               <h1 className="text-4xl font-bold text-4">
@@ -51,7 +52,9 @@ async function page({ params }: { params: { slug: string } }) {
               * Updated : {formateDateForDisplay(article.data.updatedAt)}
             </div>
             {/* Table Of Contents */}
-            
+            <div>
+              <Toc markdownContent={article.data.body} />
+            </div>
             {/*  */}
             <Article article={article} />
             <hr className="mt-12 bg-zinc-500 text-zinc-500" />

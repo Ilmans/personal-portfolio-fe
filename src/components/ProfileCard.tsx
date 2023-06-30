@@ -17,7 +17,7 @@ function ProfileCard({ className = "border-b-0" }: { className: any }) {
         <h1 className="text-2xl font-bold tracking-wider text-center">
           Hy! I'm Ilman S
         </h1>
-        <p className="font-light text-teal-400 f text--green-600">
+        <p className="font-light text-teal-300 f text--green-600">
           Full Stack Developer
         </p>
       </div>
@@ -39,7 +39,6 @@ function ProfileCard({ className = "border-b-0" }: { className: any }) {
           Hire Me!
         </button>
         <a
-          
           href="https://drive.google.com/file/d/1ZQbpRj5sQ7519SawlO0c5cSjCF-gXCWK/view?usp=drive_link"
           className="block px-12 py-2 font-semibold text-white transition-all duration-75 rounded-full bg-zinc-700 hover:bg-teal-800 hover:text-white">
           Download CV

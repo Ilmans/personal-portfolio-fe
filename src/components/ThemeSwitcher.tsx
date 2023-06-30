@@ -15,10 +15,10 @@ function ThemeSwitcher() {
   return (
     <div className="flex items-center gap-4 p-2 transition-all border rounded-lg border-zinc-300 hover:border-gray-600">
       <div className="items-center hidden font-normal lg:flex">
-        <span className={`align-middle ${darkMode ? "text-teal-400" : ""}`}>
+        <span className={`align-middle ${darkMode ? "text-teal-300" : ""}`}>
           Dark/
         </span>{" "}
-        <span className={`align-middle ${darkMode ? "" : "text-teal-400"}`}>
+        <span className={`align-middle ${darkMode ? "" : "text-teal-300"}`}>
           Light
         </span>
       </div>
@@ -38,7 +38,7 @@ function SunIcon({
   return (
     <svg
       onClick={() => setDarkMode(true)}
-      className="w-6 h-6 text-teal-400 cursor-pointer"
+      className="w-6 h-6 text-teal-300 cursor-pointer"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill="none"
@@ -66,7 +66,7 @@ function MoonIcon({
   return (
     <svg
       onClick={() => setDarkMode(false)}
-      className="w-6 h-6 text-teal-400 cursor-pointer"
+      className="w-6 h-6 text-teal-300 cursor-pointer"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill="none"

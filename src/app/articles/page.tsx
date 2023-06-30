@@ -47,7 +47,7 @@ async function page() {
                 <p className="text-sm text-zinc-400">
                   {article.body.slice(1, 150)}
                 </p>
-                <p className="flex items-center gap-2 text-sm text-teal-400">
+                <p className="flex items-center gap-2 text-sm text-teal-300">
                   Read Articles{" "}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -98,10 +98,10 @@ async function page() {
 
 const PopularArticleList: any = ({ text, href = "#" }) => {
   return (
-    <li className="hover:text-teal-400">
+    <li className="hover:text-teal-300">
       <a
         href={href}
-        className="flex items-center gap-1 dark:hover:text-teal-400 dark:text-zinc-400 ">
+        className="flex items-center gap-1 dark:hover:text-teal-300 dark:text-zinc-400 ">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
