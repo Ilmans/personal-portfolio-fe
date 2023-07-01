@@ -30,8 +30,8 @@ function page() {
   }, []);
 
   return (
-    <div className="flex gap-4">
-      <div className="w-4/5">
+    <div className="gap-4 lg:flex">
+      <div className="lg:w-4/5">
         <Jumbotron
           title={
             "Write about my opinion about computer program, code, design, and technique"
@@ -39,7 +39,11 @@ function page() {
           description="All of my long-form thoughts on programming, design, and more, collected in chronological order."
         />
         <Suspense fallback={<>Loadin..</>}>
-          <SearchBar setArticles={setArticles} getArticles={getArticles} />
+          <SearchBar
+            articles={articles}
+            setArticles={setArticles}
+            getArticles={getArticles}
+          />
         </Suspense>
         {articles === null ? (
           <p>getting articles..</p>
@@ -47,7 +51,7 @@ function page() {
           <List articles={articles} />
         )}
       </div>
-      <div className="w-1/5">
+      <div className="lg:w-1/5">
         <Wrapper>
           <h2>Popular Articles</h2>
           <Suspense

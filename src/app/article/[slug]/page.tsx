@@ -22,10 +22,10 @@ async function page({ params }: { params: { slug: string } }) {
   const article = await getArticleBySlug(params.slug);
 
   return (
-    <div className="flex gap-4">
-      <div className="w-4/5">
-        <div className="flex gap-6">
-          <div className="w-1/5">
+    <div className="gap-4 lg:flex">
+      <div className="lg:w-4/5">
+        <div className="gap-6 lg:flex">
+          <div className="hidden w-1/5 lg:block">
             <div className="p-2 transition-all duration-100 ease-in border rounded-full dark:text-zinc-400 w-fit dark:border-zinc-400 dark:hover:border-zinc-200 dark:hover:text-zinc-200">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -43,7 +43,7 @@ async function page({ params }: { params: { slug: string } }) {
             </div>
           </div>
 
-          <div className="w-4/5 px-8 font-poppins">
+          <div className="lg:px-8 lg:w-4/5 font-poppins">
             <div className="-space-y-4">
               <p className="pb-4 text-sm text-teal-300 uppercase font-semibol">
                 {article.data.category.name}
@@ -96,7 +96,7 @@ async function page({ params }: { params: { slug: string } }) {
           </div>
         </div>
       </div>
-      <div className="w-1/5">
+      <div className="lg:w-1/5">
         <Wrapper>
           <h2>Popular Articles</h2>
           <PopularArticle />
