@@ -1,15 +1,19 @@
 import Link from "next/link";
+import React, { useState } from "react";
 
 const getPopularArticles = async () => {
-  const res = await fetch("http://localhost:3120/articles/popular");
+  const res = await fetch("http://localhost:3120/articles/popular", {
+    cache: "default",
+  });
   return res.json();
 };
-const PopularArticle: any = async () => {
+const PopularArticle: any = React.memo(async () => {
   const articles = await getPopularArticles();
+
   return (
     <ul className="mt-4 space-y-2 text-xs">
-      {articles.data.map((article) => (
-        <li className="hover:text-teal-300">
+      {articles.data.map((article, i) => (
+        <li key={i} className="hover:text-teal-300">
           <Link
             href={"/article/" + article.slug}
             className="flex items-center gap-1 dark:hover:text-teal-300 dark:text-zinc-400 ">
@@ -33,6 +37,6 @@ const PopularArticle: any = async () => {
       ))}
     </ul>
   );
-};
+});
 
 export default PopularArticle;

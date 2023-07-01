@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import Jumbotron from "../../components/Jumbotron";
 import Wrapper from "../../components/Wrapper";
 
@@ -16,16 +16,18 @@ import SearchBar from "./SearchBar";
 const getArticles = async (searchTerms = "") => {
   const res = await fetch(
     "http://localhost:3120/articles?search=" + searchTerms,
-    { cache: "no-store" }
+    {
+      cache: "no-store",
+    }
   );
   return res.json();
 };
 
-const page = async () => {
-  // const [articles, setArticles] = useState([]);
-  // useEffect(() => {
-  //   getArticles().then((data) => setArticles(data.data));
-  // }, []);
+function page() {
+  const [articles, setArticles] = useState(null);
+  useEffect(() => {
+    getArticles().then((res) => setArticles(res.data));
+  }, []);
 
   return (
     <div className="flex gap-4">
@@ -36,14 +38,19 @@ const page = async () => {
           }
           description="All of my long-form thoughts on programming, design, and more, collected in chronological order."
         />
-        <SearchBar />
-
-        {/* <List articles={[]} setArticles={() => {}} /> */}
+        <SearchBar setArticles={setArticles} getArticles={getArticles} />
+        {articles === null ? (
+          <p>getting articles..</p>
+        ) : (
+          <List articles={articles} />
+        )}
       </div>
       <div className="w-1/5">
         <Wrapper>
           <h2>Popular Articles</h2>
-          <PopularArticle />
+          <Suspense fallback={<>loading</>}>
+            <PopularArticle />
+          </Suspense>
         </Wrapper>
         <Wrapper className="mt-6 text-sm">
           <h2 className="text-lg">Social Media</h2>

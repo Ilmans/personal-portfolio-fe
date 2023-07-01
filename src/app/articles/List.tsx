@@ -1,17 +1,16 @@
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { formateDateForDisplay } from "../helpers";
-import SearchBar from "./SearchBar";
 
 // function timeout(ms) {
 //   return new Promise((resolve) => setTimeout(resolve, ms));
 // }
 
-async function List({ articles }: { articles: any }) {
+function List({ articles }: { articles: any }) {
   return (
     <div className="border-l mt-14 border-zinc-700 ">
-      {articles.map((article: Article) => (
-        <div className="flex items-start">
+      {articles.map((article: Article, i) => (
+        <div key={i} className="flex items-start">
           <div className="w-1/4 py-8 ml-8 ">
             <p className="text-xs text-zinc-400 font-poppins">
               {formateDateForDisplay(article.createdAt)}
