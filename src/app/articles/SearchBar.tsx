@@ -18,7 +18,7 @@ function SearchBar({ setArticles, getArticles, articles }) {
 
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
-      getArticles(searchTerm).then((res) => setArticles(res.data));
+      getArticles(1, searchTerm).then((res) => setArticles(res.data));
     }, 300);
 
     return () => clearTimeout(delayDebounceFn);

@@ -12,10 +12,14 @@ import {
 import PopularArticle from "../../components/PopularArticle";
 import List from "./List";
 import SearchBar from "./SearchBar";
+import Pagination from "../../components/Pagination";
 
-const getArticles = async (searchTerms = "") => {
+const getArticles = async (page = 1, searchTerms = "") => {
   const res = await fetch(
-    "http://localhost:3120/articles?search=" + encodeURIComponent(searchTerms),
+    "http://localhost:3120/articles?search=" +
+      encodeURIComponent(searchTerms) +
+      "&page=" +
+      page,
     {
       cache: "no-store",
     }
@@ -25,9 +29,21 @@ const getArticles = async (searchTerms = "") => {
 
 function page() {
   const [articles, setArticles] = useState(null);
+  const [meta, setMeta] = useState(null);
   useEffect(() => {
-    getArticles().then((res) => setArticles(res.data));
+    getArticles().then((res) => {
+      setArticles(res.data);
+      setMeta(res.paging);
+    });
   }, []);
+
+  const onPageChange = (toPage) => {
+    setArticles(null);
+    getArticles(toPage).then((res) => {
+      setArticles(res.data);
+      setMeta(res.paging);
+    });
+  };
 
   return (
     <div className="gap-4 lg:flex">
@@ -49,6 +65,13 @@ function page() {
           <p>getting articles..</p>
         ) : (
           <List articles={articles} />
+        )}
+        {meta !== null && (
+          <Pagination
+            totalPages={meta.total_page}
+            onPageChange={onPageChange}
+            currentPage={meta.page}
+          />
         )}
       </div>
       <div className="lg:w-1/5">
