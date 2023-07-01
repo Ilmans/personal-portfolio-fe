@@ -15,7 +15,7 @@ import SearchBar from "./SearchBar";
 
 const getArticles = async (searchTerms = "") => {
   const res = await fetch(
-    "http://localhost:3120/articles?search=" + searchTerms,
+    "http://localhost:3120/articles?search=" + encodeURIComponent(searchTerms),
     {
       cache: "no-store",
     }
@@ -38,7 +38,9 @@ function page() {
           }
           description="All of my long-form thoughts on programming, design, and more, collected in chronological order."
         />
-        <SearchBar setArticles={setArticles} getArticles={getArticles} />
+        <Suspense fallback={<>Loadin..</>}>
+          <SearchBar setArticles={setArticles} getArticles={getArticles} />
+        </Suspense>
         {articles === null ? (
           <p>getting articles..</p>
         ) : (
@@ -48,7 +50,14 @@ function page() {
       <div className="w-1/5">
         <Wrapper>
           <h2>Popular Articles</h2>
-          <Suspense fallback={<>loading</>}>
+          <Suspense
+            fallback={
+              <ul>
+                {new Array(5).fill("a").map((i) => (
+                  <li className="h-2 my-2 rounded-lg animate-pulse bg-zinc-400 "></li>
+                ))}
+              </ul>
+            }>
             <PopularArticle />
           </Suspense>
         </Wrapper>
