@@ -1,8 +1,9 @@
 import Link from "next/link";
 import React, { useState } from "react";
+import { config } from "../app/helpers";
 
 const getPopularArticles = async () => {
-  const res = await fetch("http://localhost:3120/articles/popular", {
+  const res = await fetch(`${config.BACKEND_URL}/articles/popular`, {
     cache: "default",
   });
   return res.json();

@@ -13,10 +13,11 @@ import PopularArticle from "../../components/PopularArticle";
 import List from "./List";
 import SearchBar from "./SearchBar";
 import Pagination from "../../components/Pagination";
+import { config } from "../helpers";
 
 const getArticles = async (page = 1, searchTerms = "") => {
   const res = await fetch(
-    "http://localhost:3120/articles?search=" +
+    `${config.BACKEND_URL}/articles?search=` +
       encodeURIComponent(searchTerms) +
       "&page=" +
       page,

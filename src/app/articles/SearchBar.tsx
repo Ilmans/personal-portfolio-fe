@@ -1,9 +1,10 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { SearchIcon, XCircle } from "../../components/Icon";
+import { config } from "../helpers";
 
 const getCategories = async () => {
-  const res = await fetch("http://localhost:3120/categories", {
+  const res = await fetch(`${config.BACKEND_URL}/categories`, {
     cache: "default",
   });
   return res.json();

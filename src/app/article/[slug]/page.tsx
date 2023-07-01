@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import React from "react";
 import Article from "./Article";
-import { formateDateForDisplay } from "../../helpers";
+import { config, formateDateForDisplay } from "../../helpers";
 import {
   FacebookIcon,
   InstagramIcon,
@@ -30,7 +30,7 @@ export async function generateMetadata(
 }
 
 const getArticleBySlug = async (slug) => {
-  const res = await fetch("http://localhost:3120/article/" + slug);
+  const res = await fetch(`${config.BACKEND_URL}/article/` + slug);
   if (res.status === 404) {
     notFound();
   }

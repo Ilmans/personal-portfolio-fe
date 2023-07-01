@@ -22,3 +22,7 @@ export const formateDateForDisplay = (dateString: string) => {
   });
 };
 
+export const config = {
+  BACKEND_URL: "http://localhost:3120",
+};
+
