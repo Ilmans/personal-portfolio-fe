@@ -14,6 +14,7 @@ import List from "./List";
 import SearchBar from "./SearchBar";
 import Pagination from "../../components/Pagination";
 import { config } from "../helpers";
+import { notFound } from "next/navigation";
 
 const getArticles = async (page = 1, searchTerms = "") => {
   const res = await fetch(
@@ -31,11 +32,16 @@ const getArticles = async (page = 1, searchTerms = "") => {
 function page() {
   const [articles, setArticles] = useState(null);
   const [meta, setMeta] = useState(null);
+  const [fatalError, setFatalError] = useState(false);
   useEffect(() => {
-    getArticles().then((res) => {
-      setArticles(res.data);
-      setMeta(res.paging);
-    });
+    getArticles()
+      .then((res) => {
+        setArticles(res.data);
+        setMeta(res.paging);
+      })
+      .catch(() => {
+        setFatalError(true);
+      });
   }, []);
 
   const onPageChange = (toPage) => {
@@ -62,10 +68,19 @@ function page() {
             getArticles={getArticles}
           />
         </Suspense>
-        {articles === null ? (
-          <p>getting articles..</p>
+        {fatalError ? (
+          <div className="flex flex-col mt-12">
+            <h2 className="font-bold font-poppins">Filed load articles</h2>
+            <p>Please try to refresh page</p>
+          </div>
         ) : (
-          <List articles={articles} />
+          <>
+            {articles === null ? (
+              <p>getting articles..</p>
+            ) : (
+              <List articles={articles} />
+            )}
+          </>
         )}
         {meta !== null && (
           <Pagination

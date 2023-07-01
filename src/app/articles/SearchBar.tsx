@@ -13,8 +13,11 @@ function SearchBar({ setArticles, getArticles, articles }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [categories, setCategories] = useState(null);
 
+  const [fatalError, setFatalError] = useState(false);
   useEffect(() => {
-    getCategories().then((res) => setCategories(res.data));
+    getCategories()
+      .then((res) => setCategories(res.data))
+      .catch(() => setFatalError(true));
   }, []);
 
   useEffect(() => {

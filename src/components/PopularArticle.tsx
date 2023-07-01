@@ -9,7 +9,15 @@ const getPopularArticles = async () => {
   return res.json();
 };
 const PopularArticle: any = React.memo(async () => {
-  const articles = await getPopularArticles();
+  let fatalErrors = false;
+  const articles = await getPopularArticles().catch(() => {
+    fatalErrors = true;
+  });
+  if (fatalErrors) {
+    return (
+      <p className="text-xs text-zinc-400">Failed load populer articles</p>
+    );
+  }
 
   return (
     <ul className="mt-4 space-y-2 text-xs">
