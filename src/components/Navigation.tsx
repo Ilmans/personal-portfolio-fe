@@ -45,7 +45,7 @@ function Navigation({ mobileMenuShow, setMobileMenuShow }: NavigationProps) {
 
 function NavLi({ text, url = "#", active = false }) {
   return (
-    <li className="block mx-4 mr-10 font-normal border-b lg:py-2 lg:px-4 lg:font-bold border-zinc-700 lg:m-0 lg:inline-block">
+    <li className="block mx-4 mr-10 font-normal lg:py-2 lg:px-4 lg:font-bold border-zinc-700 lg:m-0 lg:inline-block">
       <Link
         href={url}
         className={`text-lg transition-all hover:text-teal-300 ${

@@ -1,43 +1,46 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
 
 function ThemeSwitcher() {
-  const darkOrNo: string = localStorage.getItem("theme");
-  const [darkMode, setDarkMode] = useState<boolean>(darkOrNo === "dark");
-  useEffect(() => {
-    const themeClass: string = darkMode ? "dark" : "light";
-    localStorage.setItem("theme", themeClass);
-    document.documentElement.classList.add(themeClass);
-    return () => {
-      document.documentElement.classList.remove(themeClass);
-    };
-  }, [darkMode]);
+  const { theme, setTheme } = useTheme();
+  // const darkOrNo: string =
+  //   typeof window !== "undefined" ? localStorage.getItem("theme") : "dark";
+  // const [darkMode, setDarkMode] = useState<boolean>(darkOrNo === "dark");
+  // useEffect(() => {
+  //   const themeClass: string = darkMode ? "dark" : "light";
+  //   if (typeof window !== "undefined") {
+  //     localStorage.setItem("theme", themeClass);
+  //   }
+  //   document.documentElement.classList.add(themeClass);
+  //   return () => {
+  //     document.documentElement.classList.remove(themeClass);
+  //   };
+  // }, [darkMode]);
   return (
     <div className="flex items-center gap-4 p-2 transition-all border rounded-lg border-zinc-300 hover:border-gray-600">
       <div className="items-center hidden font-normal lg:flex">
-        <span className={`align-middle ${darkMode ? "text-teal-300" : ""}`}>
+        <span
+          className={`align-middle ${theme === "dark" ? "text-teal-300" : ""}`}>
           Dark/
         </span>{" "}
-        <span className={`align-middle ${darkMode ? "" : "text-teal-300"}`}>
+        <span
+          className={`align-middle ${theme === "dark" ? "" : "text-teal-300"}`}>
           Light
         </span>
       </div>
-      {darkMode ? (
-        <MoonIcon setDarkMode={setDarkMode} />
+      {theme == "dark" ? (
+        <MoonIcon setTheme={setTheme} />
       ) : (
-        <SunIcon setDarkMode={setDarkMode} />
+        <SunIcon setTheme={setTheme} />
       )}
     </div>
   );
 }
-function SunIcon({
-  setDarkMode,
-}: {
-  setDarkMode: (darkMode: boolean) => void;
-}) {
+function SunIcon({ setTheme }: { setTheme: any }) {
   return (
     <svg
-      onClick={() => setDarkMode(true)}
+      onClick={() => setTheme("dark")}
       className="w-6 h-6 text-teal-300 cursor-pointer"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -58,14 +61,10 @@ function SunIcon({
     </svg>
   );
 }
-function MoonIcon({
-  setDarkMode,
-}: {
-  setDarkMode: (darkMode: boolean) => void;
-}) {
+function MoonIcon({ setTheme }: { setTheme: any }) {
   return (
     <svg
-      onClick={() => setDarkMode(false)}
+      onClick={() => setTheme("light")}
       className="w-6 h-6 text-teal-300 cursor-pointer"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"

@@ -2,8 +2,14 @@ import { notFound } from "next/navigation";
 import React from "react";
 import Article from "./Article";
 import { formateDateForDisplay } from "../../helpers";
-import { TwitterIcon } from "../../../components/SocialIcon";
+import {
+  FacebookIcon,
+  InstagramIcon,
+  TwitterIcon,
+} from "../../../components/SocialIcon";
 import Toc from "./Toc";
+import PopularArticle from "../../../components/PopularArticle";
+import Wrapper from "../../../components/Wrapper";
 
 const getArticleBySlug = async (slug: string) => {
   const res = await fetch("http://localhost:3120/article/" + slug);
@@ -89,6 +95,24 @@ async function page({ params }: { params: { slug: string } }) {
             </div>
           </div>
         </div>
+      </div>
+      <div className="w-1/5">
+        <Wrapper>
+          <h2>Popular Articles</h2>
+          <PopularArticle />
+        </Wrapper>
+        <Wrapper className="mt-6 text-sm">
+          <h2 className="text-lg">Social Media</h2>
+          <button className="flex items-center gap-2 mt-4">
+            <InstagramIcon className="w-6 h-6" /> Follow on Instagram
+          </button>
+          <button className="flex items-center gap-2 mt-4">
+            <TwitterIcon className="w-6 h-6" /> Follow on Instagram
+          </button>
+          <button className="flex items-center gap-2 mt-4 ">
+            <FacebookIcon className="w-6 h-6" /> Follow on Facebook
+          </button>
+        </Wrapper>
       </div>
     </div>
   );
