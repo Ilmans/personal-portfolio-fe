@@ -1,22 +1,19 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { useTheme } from "next-themes";
+// import { useTheme } from "next-themes";
 
 function ThemeSwitcher() {
-  const { theme, setTheme } = useTheme();
-  // const darkOrNo: string =
-  //   typeof window !== "undefined" ? localStorage.getItem("theme") : "dark";
-  // const [darkMode, setDarkMode] = useState<boolean>(darkOrNo === "dark");
-  // useEffect(() => {
-  //   const themeClass: string = darkMode ? "dark" : "light";
-  //   if (typeof window !== "undefined") {
-  //     localStorage.setItem("theme", themeClass);
-  //   }
-  //   document.documentElement.classList.add(themeClass);
-  //   return () => {
-  //     document.documentElement.classList.remove(themeClass);
-  //   };
-  // }, [darkMode]);
+  //const { theme, setTheme } = useTheme();
+  const currentTheme: string = localStorage.getItem("theme");
+  const [theme, setTheme] = useState(currentTheme);
+  const handleThemeChange = (newTheme) => {
+    setTheme(newTheme);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("theme", newTheme);
+      document.documentElement.classList.remove(theme);
+      document.documentElement.classList.add(newTheme);
+    }
+  };
   return (
     <div className="flex items-center gap-4 p-2 transition-all border rounded-lg border-zinc-300 hover:border-gray-600">
       <div className="items-center hidden font-normal lg:flex">
@@ -30,17 +27,17 @@ function ThemeSwitcher() {
         </span>
       </div>
       {theme == "dark" ? (
-        <MoonIcon setTheme={setTheme} />
+        <MoonIcon handleThemeChange={handleThemeChange} />
       ) : (
-        <SunIcon setTheme={setTheme} />
+        <SunIcon handleThemeChange={handleThemeChange} />
       )}
     </div>
   );
 }
-function SunIcon({ setTheme }: { setTheme: any }) {
+function SunIcon({ handleThemeChange }: { handleThemeChange: any }) {
   return (
     <svg
-      onClick={() => setTheme("dark")}
+      onClick={() => handleThemeChange("dark")}
       className="w-6 h-6 text-teal-300 cursor-pointer"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -61,10 +58,10 @@ function SunIcon({ setTheme }: { setTheme: any }) {
     </svg>
   );
 }
-function MoonIcon({ setTheme }: { setTheme: any }) {
+function MoonIcon({ handleThemeChange }: { handleThemeChange: any }) {
   return (
     <svg
-      onClick={() => setTheme("light")}
+      onClick={() => handleThemeChange("light")}
       className="w-6 h-6 text-teal-300 cursor-pointer"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"

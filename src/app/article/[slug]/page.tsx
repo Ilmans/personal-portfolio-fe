@@ -12,6 +12,7 @@ import PopularArticle from "../../../components/PopularArticle";
 import Wrapper from "../../../components/Wrapper";
 import Back from "./Back";
 import { Metadata, ResolvingMetadata } from "next";
+import { LoveIcon, SearchIcon } from "../../../components/Icon";
 
 type Props = {
   params: { slug: string };
@@ -73,19 +74,7 @@ async function page({ params }: Props) {
               <div className="p-8 mt-12 border rounded-lg border-zinc-400">
                 <div className="flex items-center gap-2 text-lg font-semibold font-syne">
                   <h2 className="">Did you enjoy this article?</h2>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="white"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="w-6 h-6">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
-                    />
-                  </svg>
+                  <LoveIcon className="w-4 h-4" fill="white" />
                 </div>
                 <div className="flex gap-4">
                   <a className="text-sm text-teal-300 underline ">
