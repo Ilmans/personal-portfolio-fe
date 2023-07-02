@@ -65,6 +65,11 @@ function page({}) {
           </div>
         }
       />
+      <Link
+        href="/manage/articles/create"
+        className="-mt-8 text-teal-300 underline">
+        Create Article
+      </Link>
       <div className="mt-8">
         <div className="w-full p-2 border rounded-lg text-zinc-400 dark:bg-zinc-800 dark:border-zinc-700">
           {articles === null ? <EmptyData /> : <List articles={articles} />}

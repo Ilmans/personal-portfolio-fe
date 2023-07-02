@@ -19,7 +19,7 @@ SyntaxHighlighter.registerLanguage("markdown", markdown);
 SyntaxHighlighter.registerLanguage("json", json);
 SyntaxHighlighter.registerLanguage("php", php);
 
-function Article({ article }) {
+function Article({ markdown }) {
   return (
     <ReactMarkdown
       className="space-y-8 text-sm dark:text-zinc-300 markdown"
@@ -45,7 +45,7 @@ function Article({ article }) {
           );
         },
       }}>
-      {article.data.body}
+      {markdown}
     </ReactMarkdown>
   );
 }

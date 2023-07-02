@@ -69,7 +69,7 @@ async function page({ params }: Props) {
                 <Toc markdownContent={article.data.body} />
               </div>
               {/*  */}
-              <Article article={article} />
+              <Article markdown={article.data.body} />
               <hr className="mt-12 bg-zinc-500 text-zinc-500" />
               <div className="p-8 mt-12 border rounded-lg border-zinc-400">
                 <div className="flex items-center gap-2 text-lg font-semibold font-syne">

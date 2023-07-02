@@ -15,7 +15,7 @@ function Sidebar() {
             "bg-teal-400 dark:text-zinc-100 font-normal"
           } transition-all duration-100 rounded-lg hover:bg-zinc-700 dark:text-zinc-300 hover:dark:text-white`}>
           <Link href="/manage/articles" className="text-sm ">
-            <TagIcon className="inline w-4 h-4 mx-2 icon-goyang" />
+            <BookIcon className="inline w-4 h-4 mx-2 icon-goyang" />
             Articles
           </Link>
         </li>
