@@ -1,12 +1,16 @@
 "use client";
 import React, { useState } from "react";
 import Input from "../../components/Input";
-import { signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { logIn } from "../../redux/features/auth-slice";
 import { useAuthRedirect } from "../../hook/useAuthRedirect";
+import { config } from "../helpers";
+import { useDispatch } from "react-redux";
 
 function page() {
   useAuthRedirect("/", false);
+   const router = useRouter();
+   const distpatch = useDispatch();
 
   const [data, setData] = useState({
     username: "",
@@ -15,13 +19,27 @@ function page() {
 
   const doLogin = async (e) => {
     e.preventDefault();
-    const res = await signIn("credentials", {
-      redirect: false,
-      username: data.username,
-      password: data.password,
-    });
+    if (!data.username || !data.password) {
+      alert("Please input valid data");
+      return;
+    }
+    fetch(config.BACKEND_URL + "/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        distpatch(logIn(res.data));
+        console.log(res);
 
-    console.log(res);
+        // router.push("/manage/articles");
+      })
+      .catch((err) => {
+        console.log(err);
+
+        alert("something went wrong");
+      });
   };
 
   return (

@@ -15,6 +15,7 @@ import SearchBar from "./SearchBar";
 import Pagination from "../../components/Pagination";
 import { config } from "../helpers";
 
+
 const getArticles = async (page = 1, searchTerms = "") => {
   const res = await fetch(
     `${config.BACKEND_URL}/articles?search=` +

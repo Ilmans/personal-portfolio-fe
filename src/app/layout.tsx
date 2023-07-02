@@ -1,11 +1,10 @@
 import "./globals.css";
 
-import Header from "../components/Header";
 import { Metadata } from "next";
-import { LoveIcon } from "../components/Icon";
 import ThemeProvider from "./providers/ThemeProvider";
-import { NextAuthProvider } from "./providers/providers";
 import LayoutProvider from "./providers/LayoutProvider";
+import { Provider } from "react-redux";
+import ReduxProvider from "./providers/ReduxProvider";
 
 export const metadata: Metadata = {
   title: {
@@ -20,11 +19,12 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }) {
+ 
   return (
     <ThemeProvider>
-      <NextAuthProvider>
+      <ReduxProvider>
         <LayoutProvider>{children}</LayoutProvider>
-      </NextAuthProvider>
+      </ReduxProvider>
     </ThemeProvider>
   );
 }

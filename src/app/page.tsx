@@ -1,8 +1,11 @@
+"use client";
 import Image from "next/image";
 import { Fragment } from "react";
 import Wrapper from "../components/Wrapper";
 import Button from "../components/Button";
 import ProfileCard from "../components/ProfileCard";
+import { RootState, useAppSelector } from "../redux/store";
+import { useSelector } from "react-redux";
 
 const experiences = [
   "PHP",
@@ -24,6 +27,9 @@ const experiences = [
   "VPS Management (Linux)",
 ];
 export default function Home() {
+  const isAuth = useSelector<RootState>((state) => state.auth.value.isAuth);
+  console.log(isAuth);
+
   return (
     <main className="flex justify-center gap-4 mt-4">
       <ProfileCard className="hidden lg:w-2/7 lg:block" />
