@@ -36,8 +36,10 @@ export default function Home() {
 
             <div className="w-full px-4 py-4 lg:py-12 lg:w-1/2 font-poppins">
               <div className="relative flex items-center gap-2 text-xl font-normal z-1 ">
-                <p className="text-teal-300 ">Hi!</p>
-                <p className="text-zinc-400">About Me</p>
+                <p className="text-teal-300 ">{`> ~ %`}</p>
+                <p className="text-zinc-400">
+                  About Me<span className="animate-blink">_</span>
+                </p>
                 <span className="absolute flex items-center transform -bottom-4 -rotate-3">
                   <span className="w-32 h-0.5 bg-teal-400"></span>
                   <span className="w-4 h-4 -ml-4 transform rotate-45 border-t-4 border-r-2 border-teal-400"></span>

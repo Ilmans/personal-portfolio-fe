@@ -9,7 +9,7 @@ const getCategories = async () => {
   });
   return res.json();
 };
-function SearchBar({ setArticles, getArticles, articles }) {
+function SearchBar({ setArticles, getArticles, articles, full = false }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [categories, setCategories] = useState(null);
 
@@ -58,7 +58,7 @@ function SearchBar({ setArticles, getArticles, articles }) {
               ))
           )}
         </ul>
-        <div className="relative lg:w-2/3">
+        <div className={`relative ${full ? "w-full" : "lg:w-2/3"} `}>
           <input
             onChange={handleSearch}
             value={searchTerm}

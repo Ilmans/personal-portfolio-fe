@@ -34,7 +34,7 @@ function Navigation({ mobileMenuShow, setMobileMenuShow }: NavigationProps) {
         <NavLi
           active={currentRoute === "/articles"}
           url="/articles"
-          text={"Articles"}
+          text={"Blog"}
         />
         <NavLi active={currentRoute === "/uses"} url="/uses" text={"Uses"} />
       </ul>
@@ -48,9 +48,10 @@ function NavLi({ text, url = "#", active = false }) {
     <li className="block mx-4 mr-10 font-normal lg:py-2 lg:px-4 lg:font-bold border-zinc-700 lg:m-0 lg:inline-block">
       <Link
         href={url}
-        className={`text-lg transition-all hover:text-teal-300 ${
-          active ? "text-teal-300" : ""
+        className={`text-sm transition-all  hover:text-teal-300 ${
+          active ? "text-teal-300" : "text-zinc-400"
         }`}>
+        {active && <span className="animate-blink">{"> "}</span>}
         {text}
         {/* <span className="absolute bottom-0 h-0.5 transition-transform duration-300 transform scale-x-0 bg-teal-400 right-3 left-3 group-hover:scale-x-100"></span> */}
       </Link>

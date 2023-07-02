@@ -17,7 +17,7 @@ function ProfileCard({ className = "border-b-0" }: { className: any }) {
         <h1 className="text-2xl font-bold tracking-wider text-center">
           Hy! I'm Ilman S
         </h1>
-        <p className="font-light text-teal-300 f text--green-600">
+        <p className="font-light text-teal-300 animate-typing f text--green-600">
           Full Stack Developer
         </p>
       </div>
@@ -35,7 +35,7 @@ function ProfileCard({ className = "border-b-0" }: { className: any }) {
         </div>
       </div>
       <div className="mt-8 space-y-2 text-center">
-        <button className="px-16 py-2 font-semibold text-black transition-all duration-75 bg-teal-400 rounded-full hover:bg-teal-800 hover:text-white">
+        <button className="px-16 py-2 font-semibold transition-all duration-75 bg-teal-400 rounded-full dark:text-white hover:bg-teal-800 hover:text-white">
           Hire Me!
         </button>
         <a

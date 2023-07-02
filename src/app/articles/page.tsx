@@ -14,7 +14,6 @@ import List from "./List";
 import SearchBar from "./SearchBar";
 import Pagination from "../../components/Pagination";
 import { config } from "../helpers";
-import { notFound } from "next/navigation";
 
 const getArticles = async (page = 1, searchTerms = "") => {
   const res = await fetch(

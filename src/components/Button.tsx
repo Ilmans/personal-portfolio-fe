@@ -1,9 +1,17 @@
 import React from "react";
 
-function Button({ text, className = "" }: { text: String; className: String }) {
+function Button({
+  text,
+  className = "",
+  ...props
+}: {
+  text: String;
+  className: string;
+}) {
   return (
     <button
-      className={`px-6 py-2  text-white rounded-full bg-zinc-700 dark:bg-zinc-900 dark:hover:bg-teal-400 hover:bg-teal-400 ${className}`}>
+      {...props}
+      className={`${className} px-6 py-2  text-white rounded-full bg-zinc-700 dark:bg-teal-700 dark:hover:bg-teal-400 hover:bg-teal-400 `}>
       {text}
     </button>
   );
