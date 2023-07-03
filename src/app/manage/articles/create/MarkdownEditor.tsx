@@ -20,7 +20,7 @@ interface Props {
 }
 
 const MarkdownEditor: React.FC<Props> = ({ article, setArticle }: Props) => {
-  const [md, setMd] = useState("");
+  const [md, setMd] = useState(article.body);
   const handleEditorChange = (value: string | undefined) => {
     setMd(value);
   };

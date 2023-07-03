@@ -6,7 +6,11 @@ import Button from "../../../../components/Button";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../../redux/store";
 import * as yup from "yup";
-import { createArticle, getCategories } from "../../../../lib/api";
+import {
+  createArticle,
+  getCategories,
+  updateArticle,
+} from "../../../../lib/api";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 
@@ -22,7 +26,13 @@ interface Article {
   published: number;
 }
 
-function Form() {
+interface Props {
+  // if null = create, if not null = update
+  dataArticle: any | null;
+}
+function Form({ dataArticle = null }: Props) {
+  console.log(dataArticle);
+
   const router = useRouter();
   const token = useSelector<RootState>((state) => state.auth.value.user.token);
   const [errors, setErrors] = useState<any>({
@@ -32,14 +42,19 @@ function Form() {
   });
   const [categories, setCategories] = useState(null);
   const [processing, setProcessing] = useState(false);
-  const [article, setArticle] = useState({
+  // initial state for create article
+  const initialState = {
     title: "",
     categoryId: null,
     body: "",
     published: 1,
-  } as Article);
+  } as Article;
 
-  // submit article
+  const [article, setArticle] = useState(
+    dataArticle === null ? initialState : dataArticle
+  );
+
+  // create article
   const create = (e) => {
     e.preventDefault();
     setErrors({ body: "", title: "", categoryId: "" });
@@ -52,14 +67,15 @@ function Form() {
         createArticle(token, article)
           .then((res) => {
             if ("errors" in res) alert(res.errors);
+
             toast.success(
               "Article success created. You will be redirect to articles page in 2 second."
             );
-
-            setProcessing(false);
             setTimeout(() => {
               router.push("/manage/articles");
             }, 1000);
+
+            setProcessing(false);
           })
           .catch((err) => {
             setProcessing(false);
@@ -77,12 +93,48 @@ function Form() {
         setErrors(newErrors);
       });
   };
-  //
+  //update article
+  const update = (e) => {
+    e.preventDefault();
+    setErrors({ body: "", title: "", categoryId: "" });
+    setProcessing(true);
+    validationSchema
+      .validate(article, {
+        abortEarly: false,
+      })
+      .then(() => {
+        updateArticle(token, article)
+          .then((res) => {
+            if ("errors" in res) alert(res.errors);
+            toast.success("Article success updated. ");
+
+            router.push("/manage/articles");
+
+            setProcessing(false);
+          })
+          .catch((err) => {
+            setProcessing(false);
+            console.log(err);
+          });
+      })
+      .catch((err) => {
+        // Validasi gagal, tangkap kesalahan dan perbarui state errors
+        const newErrors = {};
+        err.inner.forEach((e) => {
+          newErrors[e.path] = e.message;
+        });
+
+        setProcessing(false);
+        setErrors(newErrors);
+      });
+  };
+
+  //handle change input
   const onChange = (e) => {
     setArticle({ ...article, [e.target.name]: e.target.value });
   };
 
-  // get categories
+  // get categories for select input
   useEffect(() => {
     getCategories()
       .then((res) => setCategories(res.data))
@@ -159,7 +211,13 @@ function Form() {
           disabled={processing}
           text={`${processing ? "processing..." : "Save"}`}
           className="w-full"
-          onClick={create}
+          onClick={(e) => {
+            if (dataArticle === null) {
+              create(e);
+            } else {
+              update(e);
+            }
+          }}
         />
       </div>
     </div>

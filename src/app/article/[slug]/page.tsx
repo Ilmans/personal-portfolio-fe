@@ -1,4 +1,3 @@
-import { notFound } from "next/navigation";
 import React from "react";
 import Article from "./Article";
 import { formateDateForDisplay } from "../../helpers";
@@ -14,6 +13,7 @@ import Back from "./Back";
 import { Metadata, ResolvingMetadata } from "next";
 import { LoveIcon } from "../../../components/Icon";
 import { getArticleBySlug } from "../../../lib/api";
+import { notFound } from "next/navigation";
 
 type Props = {
   params: { slug: string };
@@ -24,15 +24,18 @@ export async function generateMetadata(
   parent?: ResolvingMetadata
 ): Promise<Metadata> {
   const article = await getArticleBySlug(params.slug);
-  return {
-    title: article.data.title,
-    description: article.data.body.slice(20),
-  };
+  if (article !== 404) {
+    return {
+      title: article.data.title,
+      description: article.data.body.slice(20),
+    };
+  }
+  return { title: "Article not found" };
 }
-
 
 async function page({ params }: Props) {
   const article = await getArticleBySlug(params.slug);
+  if (article === 404) notFound();
 
   return (
     <>

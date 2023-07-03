@@ -13,7 +13,7 @@ function page() {
         desc="Sharing your article to other, great!"
       />
       <div className="mt-8">
-       <Form />
+        <Form dataArticle={null} />
       </div>
     </Fragment>
   );

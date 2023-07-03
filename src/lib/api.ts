@@ -15,9 +15,11 @@ export const getArticles = async (page = 1, searchTerms = "") => {
 };
 
 export const getArticleBySlug = async (slug) => {
-  const res = await fetch(`${config.BACKEND_URL}/article/` + slug);
+  const res = await fetch(`${config.BACKEND_URL}/article/` + slug, {
+    cache: "no-store",
+  });
   if (res.status === 404) {
-    notFound();
+    return 404;
   }
   return res.json();
 };
@@ -38,6 +40,24 @@ export const createArticle = (token: any, article: any) => {
 
   return fetch(url, {
     method: "POST",
+    headers,
+    body: JSON.stringify(article),
+  })
+    .then((res) => res.json())
+    .then((res) => res)
+    .catch((err) => {
+      throw new Error(err);
+    });
+};
+export const updateArticle = (token: any, article: any) => {
+  const url = `${config.BACKEND_URL}/articles`;
+  const headers = {
+    "Content-Type": "application/json",
+    Authorization: token,
+  };
+
+  return fetch(url, {
+    method: "PATCH",
     headers,
     body: JSON.stringify(article),
   })

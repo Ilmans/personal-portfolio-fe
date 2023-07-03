@@ -30,7 +30,7 @@ function SearchBar({ setArticles, getArticles, articles, full = false }) {
   return (
     <>
       <div className="my-4">
-        <ul className="flex gap-8 p-2 text-teal-300 font-poppins">
+        <ul className="flex gap-8 p-2 font-semibold text-teal-500 dark:text-teal-300 font-poppins">
           {categories !== null ? (
             <>
               {categories.map((category, i) => (

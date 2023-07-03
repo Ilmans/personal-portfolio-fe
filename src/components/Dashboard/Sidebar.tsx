@@ -7,13 +7,13 @@ import { usePathname } from "next/navigation";
 function Sidebar() {
   const pathname = usePathname();
   return (
-    <div className="w-1/4 h-screen ">
+    <div className="w-1/4 h-screen p-4 ">
       <ul className="font-poppins">
         <li
           className={`py-2 my-2 ${
             pathname === "/manage/articles" &&
-            "bg-teal-400 dark:text-zinc-100 font-normal"
-          } transition-all duration-100 rounded-lg hover:bg-zinc-700 dark:text-zinc-300 hover:dark:text-white`}>
+            "dark:bg-teal-400 text-white bg-zinc-400 dark:text-zinc-100 font-normal"
+          } transition-all duration-100 rounded-lg  dark:hover:bg-zinc-700 dark:text-zinc-300 hover:text-white`}>
           <Link href="/manage/articles" className="text-sm ">
             <BookIcon className="inline w-4 h-4 mx-2 icon-goyang" />
             Articles
