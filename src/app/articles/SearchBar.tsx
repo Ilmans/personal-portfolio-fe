@@ -1,14 +1,9 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { SearchIcon, XCircle } from "../../components/Icon";
-import { config } from "../helpers";
+import { getCategories } from "../../lib/api";
 
-const getCategories = async () => {
-  const res = await fetch(`${config.BACKEND_URL}/categories`, {
-    cache: "default",
-  });
-  return res.json();
-};
+
 function SearchBar({ setArticles, getArticles, articles, full = false }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [categories, setCategories] = useState(null);

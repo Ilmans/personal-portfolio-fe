@@ -14,20 +14,10 @@ import List from "./List";
 import SearchBar from "./SearchBar";
 import Pagination from "../../components/Pagination";
 import { config } from "../helpers";
+import { getArticles } from "../../lib/api";
 
 
-const getArticles = async (page = 1, searchTerms = "") => {
-  const res = await fetch(
-    `${config.BACKEND_URL}/articles?search=` +
-      encodeURIComponent(searchTerms) +
-      "&page=" +
-      page,
-    {
-      cache: "no-store",
-    }
-  );
-  return res.json();
-};
+
 
 function page() {
   const [articles, setArticles] = useState(null);

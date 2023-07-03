@@ -10,6 +10,7 @@ import bash from "react-syntax-highlighter/dist/cjs/languages/prism/bash";
 import markdown from "react-syntax-highlighter/dist/cjs/languages/prism/markdown";
 import json from "react-syntax-highlighter/dist/cjs/languages/prism/json";
 import php from "react-syntax-highlighter/dist/cjs/languages/prism/php";
+import javascript from "react-syntax-highlighter/dist/cjs/languages/prism/javascript";
 
 SyntaxHighlighter.registerLanguage("tsx", tsx);
 SyntaxHighlighter.registerLanguage("typescript", typescript);
@@ -18,6 +19,7 @@ SyntaxHighlighter.registerLanguage("bash", bash);
 SyntaxHighlighter.registerLanguage("markdown", markdown);
 SyntaxHighlighter.registerLanguage("json", json);
 SyntaxHighlighter.registerLanguage("php", php);
+SyntaxHighlighter.registerLanguage("javascript", javascript);
 
 function Article({ markdown }) {
   return (
@@ -28,16 +30,19 @@ function Article({ markdown }) {
           const match = /language-(\w+)/.exec(className || "");
 
           return !inline && match ? (
-            <SyntaxHighlighter
-              style={thema}
-              PreTag="div"
-              className="codeStyle "
-              showLineNumbers={true}
-              useInlineStyles={true}
-              language={match[1]}
-              children={String(children).replace(/\n$/, "")}
-              {...props}
-            />
+            <>
+              tes
+              <SyntaxHighlighter
+                style={thema}
+                PreTag="div"
+                className="codeStyle "
+                showLineNumbers={true}
+                useInlineStyles={true}
+                language={match[1]}
+                children={String(children).replace(/\n$/, "")}
+                {...props}
+              />
+            </>
           ) : (
             <code className={className ? className : ""} {...props}>
               {children}

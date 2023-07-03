@@ -11,6 +11,8 @@ const Pagination: React.FC<PaginationProps> = ({
   totalPages,
   onPageChange,
 }) => {
+  console.log(currentPage, totalPages);
+  
   const handlePageChange = (page: number) => {
     if (page >= 1 && page <= totalPages) {
       onPageChange(page);
@@ -24,7 +26,7 @@ const Pagination: React.FC<PaginationProps> = ({
         <li
           key={i}
           className={`inline-block mx-1 cursor-pointer ${
-            i ==        currentPage ? "text-teal-300 font-bold" : "text-zinc-500"
+            i == currentPage ? "text-teal-300 font-bold" : "text-zinc-500"
           }`}
           onClick={() => handlePageChange(i)}>
           {i}

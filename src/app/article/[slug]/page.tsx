@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import React from "react";
 import Article from "./Article";
-import { config, formateDateForDisplay } from "../../helpers";
+import { formateDateForDisplay } from "../../helpers";
 import {
   FacebookIcon,
   InstagramIcon,
@@ -12,7 +12,8 @@ import PopularArticle from "../../../components/PopularArticle";
 import Wrapper from "../../../components/Wrapper";
 import Back from "./Back";
 import { Metadata, ResolvingMetadata } from "next";
-import { LoveIcon, SearchIcon } from "../../../components/Icon";
+import { LoveIcon } from "../../../components/Icon";
+import { getArticleBySlug } from "../../../lib/api";
 
 type Props = {
   params: { slug: string };
@@ -29,13 +30,7 @@ export async function generateMetadata(
   };
 }
 
-const getArticleBySlug = async (slug) => {
-  const res = await fetch(`${config.BACKEND_URL}/article/` + slug);
-  if (res.status === 404) {
-    notFound();
-  }
-  return res.json();
-};
+
 async function page({ params }: Props) {
   const article = await getArticleBySlug(params.slug);
 

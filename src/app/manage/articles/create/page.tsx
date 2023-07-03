@@ -1,7 +1,8 @@
 import React, { Fragment } from "react";
 import HeadSection from "../../../../components/Dashboard/HeadSection";
-import Input from "../../../../components/Input";
+
 import Form from "./Form";
+
 
 function page() {
   return (

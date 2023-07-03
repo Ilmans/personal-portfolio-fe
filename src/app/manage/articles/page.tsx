@@ -1,29 +1,15 @@
 "use client";
 import React, { Fragment, useEffect, useState } from "react";
 import { useAuthRedirect } from "../../../hook/useAuthRedirect";
-import Button from "../../../components/Button";
-import Input from "../../../components/Input";
 import Link from "next/link";
-import { BookIcon } from "../../../components/Icon";
-import { config } from "../../helpers";
 import HeadSection from "../../../components/Dashboard/HeadSection";
 import EmptyData from "../../../components/Dashboard/EmptyData";
 import List from "./List";
 import SearchBar from "../../articles/SearchBar";
 import Pagination from "../../../components/Pagination";
+import { getArticles } from "../../../lib/api";
 
-const getArticles = async (page = 1, searchTerms = "") => {
-  const res = await fetch(
-    `${config.BACKEND_URL}/articles?search=` +
-      encodeURIComponent(searchTerms) +
-      "&page=" +
-      page,
-    {
-      cache: "no-store",
-    }
-  );
-  return res.json();
-};
+
 
 function page({}) {
   useAuthRedirect("/login", true);
