@@ -46,9 +46,16 @@ padding : 0;
   font-weight: 800;
 }
 
+.markdown h3 {
+  font-weight : 600;
+}
+
 .codeStyle {
- 
-  border-radius: 15px;
+  position: relative;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
   padding: 4px;
 }
 

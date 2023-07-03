@@ -13,9 +13,9 @@ import Sidebar from "../../components/Dashboard/Sidebar";
       <body className=" dark:noise-bg  dark:text-white from-zinc-50 to-zinc-100 bg-gradient-to-br  dark:from-zinc-900 dark:from-60% dark:to-zinc-950">
         <div className="px-6 pt-10 lg:pt-0 lg:px-32 ">
           <Header />
+          <ToastContainer position={toast.POSITION.TOP_RIGHT} />
           {pathname.includes("/manage") ? (
             <main className="flex p-4 gap-x-12">
-              <ToastContainer position={toast.POSITION.TOP_RIGHT} />
               <Sidebar />
               <div className="w-3/4">{children}</div>
             </main>
