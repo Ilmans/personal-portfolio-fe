@@ -47,3 +47,21 @@ export const createArticle = (token: any, article: any) => {
       throw new Error(err);
     });
 };
+export const deleteArticle = (token, articleId) => {
+  const url = `${config.BACKEND_URL}/articles`;
+  const headers = {
+    "Content-Type": "application/json",
+    Authorization: token,
+  };
+
+  return fetch(url, {
+    method: "DELETE",
+    headers,
+    body: JSON.stringify({ articleId: articleId }),
+  })
+    .then((res) => res.json())
+    .then((res) => res)
+    .catch((err) => {
+      throw new Error(err);
+    });
+};

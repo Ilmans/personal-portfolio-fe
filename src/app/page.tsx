@@ -69,7 +69,7 @@ export default function Home() {
               {experiences.map((experience) => (
                 <Button
                   disabled={true}
-                  onClick={() => {}}
+                  onClick={null}
                   className="text-xs"
                   text={experience}
                 />
