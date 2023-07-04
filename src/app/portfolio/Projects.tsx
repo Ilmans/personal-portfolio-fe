@@ -1,13 +1,27 @@
 import Image from "next/image";
-import React from "react";
-import { dummyProjects } from "../../dummies/Api";
+import React, { useState } from "react";
 import Link from "next/link";
 import { config, getDomain } from "../helpers";
 import { EyeIcon } from "../../components/Icon";
+import Modal from "../../components/Modal";
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
 function Projects({ projects }) {
+  const [whichShow, setWhichShow] = useState(null);
   return (
     <div className="grid grid-cols-1 gap-4 mt-6 lg:grid-cols-3">
+      {whichShow !== null && (
+        <Modal
+          open={true}
+          onClose={() => {
+            setWhichShow(null);
+          }}
+          title={"Description Project : " + whichShow.name}>
+          <ReactMarkdown className="space-y-8 text-sm dark:text-zinc-300 markdown">
+            {whichShow.description}
+          </ReactMarkdown>
+        </Modal>
+      )}
       {projects.map((project) => (
         <div className="p-4 transition-all duration-100 rounded-lg shadow-lg cursor-pointer lg:p-2 dark:shadow-none hover:bg-zinc-200 dark:hover:bg-zinc-800">
           {/*  */}
@@ -32,9 +46,11 @@ function Projects({ projects }) {
               ))}
             </div>
             <div className="flex items-center justify-between mt-2">
-              <Link
-                className="flex items-center gap-1 text-xs hover:text-teal-300"
-                href={""}>
+              <button
+                onClick={() => {
+                  window.open(project.url, "_blank");
+                }}
+                className="flex items-center gap-1 text-xs hover:text-teal-300">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -49,9 +65,14 @@ function Projects({ projects }) {
                   />
                 </svg>
                 <p className="">{getDomain(project.url)}</p>
-              </Link>
+              </button>
 
-              <EyeIcon className="w-4 h-4 text-teal-300" />
+              <button
+                onClick={() => {
+                  setWhichShow(project);
+                }}>
+                <EyeIcon className="w-4 h-4 text-teal-300" />
+              </button>
             </div>
           </div>
         </div>

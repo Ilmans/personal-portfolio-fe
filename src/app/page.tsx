@@ -4,6 +4,7 @@ import Button from "../components/Button";
 import ProfileCard from "../components/ProfileCard";
 import { logOut } from "../redux/features/auth-slice";
 import { useDispatch } from "react-redux";
+import Modal from "../components/Modal";
 
 const experiences = [
   "PHP",
@@ -27,6 +28,7 @@ const experiences = [
 export default function Home() {
   return (
     <main className="flex justify-center gap-4 mt-4">
+      
       <ProfileCard className="hidden lg:w-2/7 lg:block" />
       <div className="lg:w-5/7">
         <Wrapper>
