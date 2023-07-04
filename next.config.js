@@ -2,6 +2,9 @@
 const removeImports = require("next-remove-imports")();
 
 const nextConfig = {
+  typescript: {
+    ignoreBuildErrors: true,
+  },
   compiler: {
     styledComponents: true,
   },

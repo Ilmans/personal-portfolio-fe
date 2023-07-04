@@ -19,7 +19,7 @@ import { getArticles } from "../../lib/api";
 
 
 
-function page() {
+function Page() {
   const [articles, setArticles] = useState(null);
   const [meta, setMeta] = useState(null);
   const [fatalError, setFatalError] = useState(false);
@@ -87,7 +87,9 @@ function page() {
             fallback={
               <ul>
                 {new Array(5).fill("a").map((i) => (
-                  <li className="h-2 my-2 rounded-lg animate-pulse bg-zinc-400 "></li>
+                  <li
+                    key={i}
+                    className="h-2 my-2 rounded-lg animate-pulse bg-zinc-400 "></li>
                 ))}
               </ul>
             }>
@@ -111,4 +113,4 @@ function page() {
   );
 };
 
-export default page;
+export default Page;

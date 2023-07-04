@@ -36,14 +36,17 @@ function Article({ markdown }) {
       className="space-y-8 text-sm dark:text-zinc-300 markdown"
       components={{
         code({ node, inline, className, children, ...props }) {
+          const text = String(children).replace(/\n$/, "");
           const match = /language-(\w+)/.exec(className || "");
 
           return !inline && match ? (
             <div>
               <div className="z-50 flex items-center justify-between p-1 pb-5 -mb-6 text-xs rounded-lg dark:text-zinc-400 dark:bg-zinc-700">
                 <p>{match ? match[1] : "Bash"}</p>
-                <CopyToClipboard text={children} onCopy={handleCopy}>
-                  <ClipBoardIcon className="w-4 h-4 hover:text-white " />
+                <CopyToClipboard text={"tes"} onCopy={handleCopy}>
+                  <div>
+                    <ClipBoardIcon className="w-4 h-4 hover:text-white" />
+                  </div>
                 </CopyToClipboard>
               </div>
               <SyntaxHighlighter
@@ -53,7 +56,7 @@ function Article({ markdown }) {
                 showLineNumbers={true}
                 useInlineStyles={true}
                 language={match[1]}
-                children={String(children).replace(/\n$/, "")}
+                children={text}
                 {...props}
               />
             </div>

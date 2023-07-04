@@ -12,7 +12,7 @@ import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
 
-function page({}) {
+function Page({}) {
   useAuthRedirect("/login", true);
   const token = useSelector<RootState>((state) => state.auth.value.user?.token);
   const [articles, setArticles] = useState(null);
@@ -99,4 +99,4 @@ function page({}) {
   );
 }
 
-export default page;
+export default Page;

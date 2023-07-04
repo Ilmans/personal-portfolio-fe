@@ -5,7 +5,7 @@ import Form from "../../articles/create/Form";
 import FormProject from "./FormProject";
 import { useAuthRedirect } from "../../../../hook/useAuthRedirect";
 
-function page() {
+function Page() {
   useAuthRedirect("/login", true);
   return (
     <Fragment>
@@ -21,4 +21,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;

@@ -23,7 +23,9 @@ function Projects({ projects }) {
         </Modal>
       )}
       {projects.map((project) => (
-        <div className="p-4 transition-all duration-100 rounded-lg shadow-lg cursor-pointer lg:p-2 dark:shadow-none hover:bg-zinc-200 dark:hover:bg-zinc-800">
+        <div
+          key={project.id}
+          className="p-4 transition-all duration-100 rounded-lg shadow-lg cursor-pointer lg:p-2 dark:shadow-none hover:bg-zinc-200 dark:hover:bg-zinc-800">
           {/*  */}
           <div>
             <Image
@@ -39,8 +41,10 @@ function Projects({ projects }) {
               {project.name}
             </h1>
             <div className="flex flex-wrap gap-2 mt-4">
-              {JSON.parse(project.stacks).map((tech) => (
-                <button className="px-1.5 py-0.5 text-xs rounded-lg bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">
+              {JSON.parse(project.stacks).map((tech, i) => (
+                <button
+                  key={i}
+                  className="px-1.5 py-0.5 text-xs rounded-lg bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">
                   {tech}
                 </button>
               ))}

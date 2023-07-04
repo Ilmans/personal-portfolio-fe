@@ -36,7 +36,7 @@ function Navigation({ mobileMenuShow, setMobileMenuShow }: NavigationProps) {
           url="/articles"
           text={"Blog"}
         />
-        <NavLi active={currentRoute === "/uses"} url="/uses" text={"Uses"} />
+        {/* <NavLi active={currentRoute === "/uses"} url="/uses" text={"Uses"} /> */}
       </ul>
       <ProfileCard className="block mx-6 shadow-2xl bg-zinc-50 dark:bg-zinc-800 lg:hidden" />
     </div>

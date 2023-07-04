@@ -28,7 +28,6 @@ const experiences = [
 export default function Home() {
   return (
     <main className="flex justify-center gap-4 mt-4">
-      
       <ProfileCard className="hidden lg:w-2/7 lg:block" />
       <div className="lg:w-5/7">
         <Wrapper>
@@ -73,6 +72,7 @@ export default function Home() {
             <div className="grid grid-cols-3 gap-4 mt-4 lg:grid-cols-4">
               {experiences.map((experience) => (
                 <Button
+                  key={experience}
                   disabled={true}
                   onClick={null}
                   className="text-xs"

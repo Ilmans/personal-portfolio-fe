@@ -125,7 +125,6 @@ function FormProject() {
               name="image"
               className="w-full"
               type="file"
-              name="image"
               onChange={onChange}
             />
           </div>

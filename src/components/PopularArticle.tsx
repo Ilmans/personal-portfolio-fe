@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React, { useState } from "react";
+import React from "react";
 import { config } from "../app/helpers";
 
 const getPopularArticles = async () => {
@@ -8,11 +8,16 @@ const getPopularArticles = async () => {
   });
   return res.json();
 };
-const PopularArticle: any = React.memo(async () => {
+const PopularArticle: any = React.memo(() => {
   let fatalErrors = false;
-  const articles = await getPopularArticles().catch(() => {
-    fatalErrors = true;
-  });
+  let articles: any;
+  const getArt = getPopularArticles()
+    .then((res) => {
+      articles = res.data;
+    })
+    .catch(() => {
+      fatalErrors = true;
+    });
   if (fatalErrors) {
     return (
       <p className="text-xs text-zinc-400">Failed load populer articles</p>

@@ -8,7 +8,7 @@ import { config } from "../helpers";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 
-function page() {
+function Page() {
   useAuthRedirect("/", false);
   const router = useRouter();
   const distpatch = useDispatch();
@@ -83,4 +83,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;

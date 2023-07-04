@@ -11,7 +11,7 @@ import Pagination from "../../../components/Pagination";
 import ListProjects from "./ListProjects";
 import { toast } from "react-toastify";
 
-function page() {
+function Page() {
   useAuthRedirect("/login", true);
   const token = useSelector<RootState>((state) => state.auth.value.user?.token);
   const [projects, setProjects] = useState(null);
@@ -88,4 +88,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;
