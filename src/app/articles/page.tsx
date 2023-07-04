@@ -72,7 +72,7 @@ function page() {
             )}
           </>
         )}
-        {meta !== null && (
+        {meta !== null && articles !== null && articles.length !== 0 && (
           <Pagination
             totalPages={meta.total_page}
             onPageChange={onPageChange}

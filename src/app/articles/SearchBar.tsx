@@ -71,7 +71,7 @@ function SearchBar({ setArticles, getArticles, articles, full = false }) {
           )}
         </div>
       </div>
-      {articles != null && articles.length == 0 && (
+      {articles != null && articles.length == 0 && searchTerm && (
         <div className="flex items-center gap-1 ">
           <p>No Articles Found</p>
           <button

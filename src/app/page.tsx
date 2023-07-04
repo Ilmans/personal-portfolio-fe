@@ -1,6 +1,9 @@
+"use client";
 import Wrapper from "../components/Wrapper";
 import Button from "../components/Button";
 import ProfileCard from "../components/ProfileCard";
+import { logOut } from "../redux/features/auth-slice";
+import { useDispatch } from "react-redux";
 
 const experiences = [
   "PHP",

@@ -25,7 +25,7 @@ const PopularArticle: any = React.memo(async () => {
         <li key={i} className="hover:text-teal-300">
           <Link
             href={"/article/" + article.slug}
-            className="flex items-center gap-1 dark:hover:text-teal-300 dark:text-zinc-400 ">
+            className="flex items-baseline justify-start gap-1 dark:hover:text-teal-300 dark:text-zinc-400 ">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

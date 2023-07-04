@@ -18,7 +18,12 @@ export const auth = createSlice({
   initialState,
   reducers: {
     logOut: () => {
-      return initialState;
+      return {
+        value: {
+          isAuth: false,
+          user: null,
+        },
+      };
     },
     logIn: (
       _,
@@ -39,6 +44,7 @@ export const auth = createSlice({
     },
   },
 });
+
 
 export const { logIn, logOut } = auth.actions;
 export default auth.reducer;

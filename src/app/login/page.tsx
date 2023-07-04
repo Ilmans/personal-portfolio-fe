@@ -6,11 +6,12 @@ import { logIn } from "../../redux/features/auth-slice";
 import { useAuthRedirect } from "../../hook/useAuthRedirect";
 import { config } from "../helpers";
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 
 function page() {
   useAuthRedirect("/", false);
-   const router = useRouter();
-   const distpatch = useDispatch();
+  const router = useRouter();
+  const distpatch = useDispatch();
 
   const [data, setData] = useState({
     username: "",
@@ -20,7 +21,7 @@ function page() {
   const doLogin = async (e) => {
     e.preventDefault();
     if (!data.username || !data.password) {
-      alert("Please input valid data");
+      toast.error("Please input valid data");
       return;
     }
     fetch(config.BACKEND_URL + "/login", {
@@ -30,15 +31,21 @@ function page() {
     })
       .then((res) => res.json())
       .then((res) => {
-        distpatch(logIn(res.data));
-        console.log(res);
+        if ("errors" in res) {
+          toast.error(res.errors);
+          return;
+        }
 
-        // router.push("/manage/articles");
+        distpatch(logIn(res.data));
+        toast.success("login success, will redirect in one second");
+        setTimeout(() => {
+          router.push("/manage/articles");
+        }, 1000);
       })
       .catch((err) => {
         console.log(err);
 
-        alert("something went wrong");
+        toast.error("Something went wrong");
       });
   };
 

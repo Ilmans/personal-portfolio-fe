@@ -85,3 +85,35 @@ export const deleteArticle = (token, articleId) => {
       throw new Error(err);
     });
 };
+
+export const getProjects = async (page = 1, searchTerms = "") => {
+  const res = await fetch(
+    `${config.BACKEND_URL}/projects?search=` +
+      encodeURIComponent(searchTerms) +
+      "&page=" +
+      page,
+    {
+      cache: "no-store",
+    }
+  );
+  return res.json();
+};
+
+export const deleteProject = (token, projectId) => {
+  const url = `${config.BACKEND_URL}/projects`;
+  const headers = {
+    "Content-Type": "application/json",
+    Authorization: token,
+  };
+
+  return fetch(url, {
+    method: "DELETE",
+    headers,
+    body: JSON.stringify({ id: projectId }),
+  })
+    .then((res) => res.json())
+    .then((res) => res)
+    .catch((err) => {
+      throw new Error(err);
+    });
+};
