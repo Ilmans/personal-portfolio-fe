@@ -28,9 +28,9 @@ function Projects({ projects }) {
           className="p-4 transition-all duration-100 rounded-lg shadow-lg cursor-pointer lg:p-2 dark:shadow-none hover:bg-zinc-200 dark:hover:bg-zinc-800">
           {/*  */}
           <div>
-            <Image
+            <img
               className="rounded-lg shadow-md"
-              loading="lazy"
+              alt="project"
               src={`${config.BACKEND_URL}/uploads/${project.image}`}
               height={150}
               width={400}
