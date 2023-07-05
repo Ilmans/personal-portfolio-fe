@@ -10,8 +10,15 @@ import HeadSection from "../../../components/Dashboard/HeadSection";
 import SearchBar from "../../articles/SearchBar";
 
 function PageArticles() {
-  const token =
-    typeof window !== undefined ? localStorage.getItem("token") : "";
+  //
+  const [token, setToken] = useState(null);
+  useEffect(() => {
+    if (token !== token) {
+      setToken(token);
+    }
+  }, [token]);
+
+  //
   const [articles, setArticles] = useState(null);
   const [meta, setMeta] = useState(null);
   const [fatalError, setFatalError] = useState(false);

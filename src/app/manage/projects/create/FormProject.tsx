@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Input from "../../../../components/Input";
 import MarkdownForm from "./MarkdownForm";
 import * as yup from "yup";
@@ -23,9 +23,14 @@ const validationSchema = yup.object().shape({
 });
 
 function FormProject() {
-  const token =
-    typeof window !== undefined ? localStorage.getItem("token") : "";
+  const [token, setToken] = useState(null);
+  useEffect(() => {
+    if (token !== token) {
+      setToken(token);
+    }
+  }, [token]);
 
+  //
   const initialState = {
     stacks: "",
     name: "",

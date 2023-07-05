@@ -30,9 +30,14 @@ interface Props {
   dataArticle: any | null;
 }
 function Form({ dataArticle = null }: Props) {
- 
-  const token =
-    typeof window !== undefined ? localStorage.getItem("token") : "";
+ // login token
+  const [token, setToken] = useState(null);
+  useEffect(() => {
+    if (token !== token) {
+      setToken(token);
+    }
+  }, [token]);
+  //
 
   const [errors, setErrors] = useState<any>({
     body: "",

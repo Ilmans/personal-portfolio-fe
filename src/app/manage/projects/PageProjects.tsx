@@ -9,8 +9,15 @@ import ListProjects from "./ListProjects";
 import Pagination from "../../../components/Pagination";
 
 function PageProjects() {
-  const token =
-    typeof window !== undefined ? localStorage.getItem("token") : "";
+  //
+  const [token, setToken] = useState(null);
+  useEffect(() => {
+    if (token !== token) {
+      setToken(token);
+    }
+  }, [token]);
+
+  //
   const [projects, setProjects] = useState(null);
   const [meta, setMeta] = useState(null);
   const [fatalError, setFatalError] = useState(false);
