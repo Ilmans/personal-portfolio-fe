@@ -14,6 +14,7 @@ import { Metadata, ResolvingMetadata } from "next";
 import { LoveIcon } from "../../../components/Icon";
 import { getArticleBySlug } from "../../../lib/api";
 import { notFound } from "next/navigation";
+import Share from "../Share";
 
 type Props = {
   params: { slug: string };
@@ -94,18 +95,7 @@ async function page({ params }: Props) {
             <h2>Popular Articles</h2>
             <PopularArticle />
           </Wrapper>
-          <Wrapper className="mt-6 text-sm">
-            <h2 className="text-lg">Social Media</h2>
-            <button className="flex items-center gap-2 mt-4">
-              <InstagramIcon className="w-6 h-6" /> Follow on Instagram
-            </button>
-            <button className="flex items-center gap-2 mt-4">
-              <TwitterIcon className="w-6 h-6" /> Follow on Instagram
-            </button>
-            <button className="flex items-center gap-2 mt-4 ">
-              <FacebookIcon className="w-6 h-6" /> Follow on Facebook
-            </button>
-          </Wrapper>
+         <Share />
         </div>
       </div>
     </>
