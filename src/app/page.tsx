@@ -26,12 +26,10 @@ const experiences = [
   "VPS Management (Linux)",
 ];
 export default function Home() {
-  console.log("ah");
-  
   return (
     <main className="flex justify-center gap-4 mt-4">
       <ProfileCard className="hidden lg:w-2/7 lg:block" />
-      <div className="lg:w-5/7">
+      <div className="lg:w-5/7 ">
         <Wrapper>
           <div className="flex flex-col justify-center gap-2 lg:flex-row">
             <div className="w-full lg:w-1/2">
@@ -68,7 +66,7 @@ export default function Home() {
             </div>
           </div>
         </Wrapper>
-        <div className="flex justify-center gap-2 -mt-4">
+        <div className="flex justify-center gap-2 lg:-mt-4">
           <Wrapper className=" font-poppins">
             <h1 className="text-lg font-bold">My Experience</h1>
             <div className="grid grid-cols-3 gap-4 mt-4 lg:grid-cols-4">

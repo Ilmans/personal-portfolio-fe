@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import ThemeSwitcher from "./ThemeSwitcher";
 import Navigation from "./Navigation";
+import Link from "next/link";
 
 function Header() {
   const [mobileMenuShow, setMobileMenuShow] = useState<boolean>(false);
@@ -15,7 +16,9 @@ function Header() {
       />
       {/* END MENU NAVIGATION */}
       <div className="w-4/6 text-xl lg:w-2/6">
-        <h1 className="font-bold ">MnZ</h1>
+        <Link href="/" className="font-bold ">
+          MnZ
+        </Link>
       </div>
       <div>
         <button

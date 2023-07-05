@@ -7,7 +7,7 @@ export const metadata = {
 };
 function layout({ children }: { children: React.ReactNode }) {
   return (
-    <main className="flex justify-center gap-4 mt-4">
+    <main className="flex justify-between gap-4 mt-4">
       <ProfileCard className="hidden lg:w-2/7 lg:block" />
       {children}
     </main>

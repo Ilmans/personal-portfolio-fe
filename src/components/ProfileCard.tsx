@@ -1,8 +1,14 @@
+"use client";
 import React from "react";
 import { FacebookIcon, InstagramIcon, TwitterIcon } from "./SocialIcon";
 import Wrapper from "./Wrapper";
 
 function ProfileCard({ className = "border-b-0" }: { className: any }) {
+  const onClick = (url) => {
+    if (typeof window !== undefined) {
+      window.open(url);
+    }
+  };
   return (
     <Wrapper className={className}>
       <div className="relative flex justify-center mx-4 my-2">
@@ -29,9 +35,24 @@ function ProfileCard({ className = "border-b-0" }: { className: any }) {
       </div>
       <div className="mt-8 lg:mt-20 ">
         <div className="flex items-center justify-center gap-6">
-          <InstagramIcon className="w-5 h-5 cursor-pointer" />
-          <TwitterIcon className="w-5 h-5 cursor-pointer" />
-          <FacebookIcon className="w-5 h-5 cursor-pointer" />
+          <InstagramIcon
+            onClick={() => {
+              onClick("https://instagram.com/ilman_sn");
+            }}
+            className="w-5 h-5 cursor-pointer"
+          />
+          <TwitterIcon
+            onClick={() => {
+              onClick("https://twitter.com/ilman_sn");
+            }}
+            className="w-5 h-5 cursor-pointer"
+          />
+          <FacebookIcon
+            onClick={() => {
+              onClick("https://facebook.com/ilman_sn");
+            }}
+            className="w-5 h-5 cursor-pointer"
+          />
         </div>
       </div>
       <div className="mt-8 space-y-2 text-center">

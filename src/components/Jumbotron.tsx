@@ -8,7 +8,7 @@ function Jumbotron({
   description: string;
 }) {
   return (
-    <div className="space-y-4 lg:w-2/3 font-poppins">
+    <div className="items-center space-y-4 lg:w-2/3 font-poppins">
       <h2 className="text-3xl font-semibold leading-10 ">
        {title}
       </h2>
