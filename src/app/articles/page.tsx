@@ -17,9 +17,9 @@ function page() {
       <div className="lg:w-4/5">
         <Jumbotron
           title={
-            "Write about my opinion about computer program, code, design, and technique"
+            "Menulis tentang opini saya tentang program komputer,code,design, personal dan teknik teknik"
           }
-          description="All of my long-form thoughts on programming, design, and more, collected in chronological order."
+          description="Salah satu cara agar mudah mengingat kembali sesuatu yang lupa adalah dengan menulisnya. tulisan sendiri akan lebih mudah di cari dan dipahami. Saya menulis apapun disini termasuk hal hal kecil yang bermanfaat bagi saya,dan mungkin buat orang lain."
         />
         <PageArticles />
       </div>

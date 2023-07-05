@@ -6,8 +6,10 @@ function page() {
   return (
     <div className="lg:w-5/7 ">
       <Jumbotron
-        title={" Things I’ve made trying to put my dent in the universe. "}
-        description="I've worked on a ton of small projects over the years, but well the ones on this list I can highlight."
+        title={
+          "Berbagai hal yang telah saya buat untuk meninggalkan jejak di dunia programming. "
+        }
+        description="Saya telah bekerja pada banyak proyek kecil selama bertahun-tahun, tetapi daftar daftar ini yang ingin saya tampilkan."
       />
       <PagePortfolio />
     </div>
