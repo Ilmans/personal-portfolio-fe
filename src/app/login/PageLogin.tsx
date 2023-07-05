@@ -1,18 +1,15 @@
 "use client";
 import React, { useState } from "react";
 import Input from "../../components/Input";
-import { redirect, usePathname, useRouter } from "next/navigation";
-import { logIn } from "../../redux/features/auth-slice";
-import { useAuthRedirect } from "../../hook/useAuthRedirect";
+import { redirect } from "next/navigation";
 import { config } from "../helpers";
-import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
+import ValidateToken from "../middleware/ValidateToken";
 
 function PageLogin() {
-  useAuthRedirect("/", false);
-  const router = useRouter();
-  const distpatch = useDispatch();
-
+  if (ValidateToken) {
+    redirect("/");
+  }
   const [data, setData] = useState({
     username: "",
     password: "",
@@ -36,7 +33,10 @@ function PageLogin() {
           return;
         }
 
-        distpatch(logIn(res.data));
+        // distpatch(logIn(res.data));
+        if (typeof window !== undefined) {
+          localStorage.setItem("token", res.data.token);
+        }
         toast.success("login success, will redirect in one second");
         setTimeout(() => {
           redirect("/manage/articles");

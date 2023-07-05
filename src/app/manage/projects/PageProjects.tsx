@@ -2,8 +2,6 @@
 import React, { Fragment, Suspense, useEffect, useState } from "react";
 import { deleteProject, getProjects } from "../../../lib/api";
 import { toast } from "react-toastify";
-import { RootState } from "../../../redux/store";
-import { useSelector } from "react-redux";
 import HeadSection from "../../../components/Dashboard/HeadSection";
 import Link from "next/link";
 import EmptyData from "../../../components/Dashboard/EmptyData";
@@ -11,7 +9,8 @@ import ListProjects from "./ListProjects";
 import Pagination from "../../../components/Pagination";
 
 function PageProjects() {
-  const token = useSelector<RootState>((state) => state.auth.value.user?.token);
+  const token =
+    typeof window !== undefined ? localStorage.getItem("token") : "";
   const [projects, setProjects] = useState(null);
   const [meta, setMeta] = useState(null);
   const [fatalError, setFatalError] = useState(false);

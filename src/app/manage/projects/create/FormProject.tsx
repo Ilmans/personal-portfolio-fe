@@ -2,10 +2,7 @@
 import React, { useState } from "react";
 import Input from "../../../../components/Input";
 import MarkdownForm from "./MarkdownForm";
-import Button from "../../../../components/Button";
 import * as yup from "yup";
-import { RootState } from "../../../../redux/store";
-import { useSelector } from "react-redux";
 import { config } from "../../../helpers";
 import { toast } from "react-toastify";
 
@@ -26,7 +23,8 @@ const validationSchema = yup.object().shape({
 });
 
 function FormProject() {
-  const token = useSelector<RootState>((state) => state.auth.value.user.token);
+  const token =
+    typeof window !== undefined ? localStorage.getItem("token") : "";
 
   const initialState = {
     stacks: "",

@@ -1,14 +1,21 @@
 "use client";
-import { usePathname } from "next/navigation";
+import { redirect, usePathname } from "next/navigation";
 import React from "react";
 import Header from "../../components/Header";
 import { LoveIcon } from "../../components/Icon";
 import Sidebar from "../../components/Dashboard/Sidebar";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import CheckLogin from "./CheckLogin";
+import ValidateToken from "../middleware/ValidateToken";
 function LayoutProvider({ children }) {
   const pathname = usePathname();
+  if (pathname.includes("/manage")) {
+    const isLogin = ValidateToken();
+
+    if (!isLogin) {
+      redirect("/login");
+    }
+  }
   // useEffect(() => {
   //   const currentTheme = localStorage.getItem("theme") || "dark";
   //   document.documentElement.classList.add(currentTheme);
@@ -25,7 +32,7 @@ function LayoutProvider({ children }) {
         <ToastContainer position={toast.POSITION.TOP_RIGHT} />
         {pathname.includes("/manage") ? (
           <main className="flex p-4 gap-x-12">
-            <CheckLogin />
+            {/* <CheckLogin /> */}
             <Sidebar />
             <div className="w-3/4">{children}</div>
           </main>

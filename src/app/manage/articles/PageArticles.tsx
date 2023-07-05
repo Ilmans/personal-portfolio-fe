@@ -2,8 +2,6 @@
 import React, { Fragment, Suspense, useEffect, useState } from "react";
 import { deleteArticle, getArticles } from "../../../lib/api";
 import { toast } from "react-toastify";
-import { useSelector } from "react-redux";
-import { RootState } from "../../../redux/store";
 import Pagination from "../../../components/Pagination";
 import List from "./List";
 import EmptyData from "../../../components/Dashboard/EmptyData";
@@ -12,7 +10,8 @@ import HeadSection from "../../../components/Dashboard/HeadSection";
 import SearchBar from "../../articles/SearchBar";
 
 function PageArticles() {
-  const token = useSelector<RootState>((state) => state.auth.value.user?.token);
+  const token =
+    typeof window !== undefined ? localStorage.getItem("token") : "";
   const [articles, setArticles] = useState(null);
   const [meta, setMeta] = useState(null);
   const [fatalError, setFatalError] = useState(false);

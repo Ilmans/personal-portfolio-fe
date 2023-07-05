@@ -3,8 +3,6 @@ import React, { useEffect, useState } from "react";
 import Input from "../../../../components/Input";
 import MarkdownEditor from "./MarkdownEditor";
 import Button from "../../../../components/Button";
-import { useSelector } from "react-redux";
-import { RootState } from "../../../../redux/store";
 import * as yup from "yup";
 import {
   createArticle,
@@ -13,6 +11,7 @@ import {
 } from "../../../../lib/api";
 import { toast } from "react-toastify";
 import { redirect } from "next/navigation";
+
 
 const validationSchema = yup.object().shape({
   title: yup.string().min(15).max(100).required(),
@@ -31,9 +30,10 @@ interface Props {
   dataArticle: any | null;
 }
 function Form({ dataArticle = null }: Props) {
-  console.log(dataArticle);
+ 
+  const token =
+    typeof window !== undefined ? localStorage.getItem("token") : "";
 
-  const token = useSelector<RootState>((state) => state.auth.value.user.token);
   const [errors, setErrors] = useState<any>({
     body: "",
     title: "",
@@ -71,7 +71,7 @@ function Form({ dataArticle = null }: Props) {
               "Article success created. You will be redirect to articles page in 2 second."
             );
             setTimeout(() => {
-              // redirect("/manage/articles");
+              redirect("/manage/articles");
             }, 1000);
 
             setProcessing(false);

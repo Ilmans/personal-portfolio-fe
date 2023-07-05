@@ -31,7 +31,7 @@ function Projects({ projects }) {
             <Image
               className="rounded-lg shadow-md"
               loading="lazy"
-              src={`${config.BACKEND_URL}/uploads/projects/${project.image}`}
+              src={`${config.BACKEND_URL}/uploads/${project.image}`}
               height={150}
               width={400}
             />
