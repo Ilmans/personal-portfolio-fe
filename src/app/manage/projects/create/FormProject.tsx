@@ -25,10 +25,10 @@ const validationSchema = yup.object().shape({
 function FormProject() {
   const [token, setToken] = useState(null);
   useEffect(() => {
-    if (token !== token) {
-      setToken(token);
-    }
-  }, [token]);
+    let tokenLog = localStorage.getItem("token");
+    setToken(tokenLog);
+  }, []);
+
 
   //
   const initialState = {

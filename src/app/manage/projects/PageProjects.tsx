@@ -12,10 +12,9 @@ function PageProjects() {
   //
   const [token, setToken] = useState(null);
   useEffect(() => {
-    if (token !== token) {
-      setToken(token);
-    }
-  }, [token]);
+    let tokenLog = localStorage.getItem("token");
+    setToken(tokenLog);
+  }, []);
 
   //
   const [projects, setProjects] = useState(null);

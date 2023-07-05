@@ -23,7 +23,7 @@ function page() {
         />
         <PageArticles />
       </div>
-      <div className="lg:w-1/5">
+      <div className="mt-4 lg:w-1/5 lg:mt-0">
         <Wrapper>
           <h2>Popular Articles</h2>
           <Suspense

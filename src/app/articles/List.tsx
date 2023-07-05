@@ -19,7 +19,7 @@ function List({ articles }: { articles: any }) {
           </div>
           <Link
             href={`/article/${article.slug}`}
-            className="block p-6 space-y-2 transition-all duration-150 ease-in-out cursor-pointer lg:w-3/4 shadow-full rounded-xl dark:shadow-none hover:bg-zinc-200 dark:hover:bg-zinc-800 font-poppins">
+            className="block p-2 mt-4 space-y-2 transition-all duration-150 ease-in-out cursor-pointer lg:p-6 lg:mt-0 lg:w-3/4 shadow-full rounded-xl dark:shadow-none hover:bg-zinc-200 dark:hover:bg-zinc-800 font-poppins">
             <h1 className="text-xl leading-6">{article.title}</h1>
             <div className="text-xs lg:text-sm text-zinc-500">
               Filled by {article.author.full_name} in{" "}

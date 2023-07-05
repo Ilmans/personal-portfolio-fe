@@ -2,28 +2,18 @@
 import Wrapper from "../components/Wrapper";
 import Button from "../components/Button";
 import ProfileCard from "../components/ProfileCard";
-import { logOut } from "../redux/features/auth-slice";
-import { useDispatch } from "react-redux";
 import Modal from "../components/Modal";
 
 const experiences = [
-  "PHP",
   "Laravel",
   "CodeIgniter",
   "TypeScript",
-  "JavaScript",
   "React JS",
   "Next Js",
   "Tailwind ",
   "Node Js",
   "Java",
   "Amazon AWS",
-  "Mysql",
-  "PostGree SQL",
-  "Photography",
-  "Photoshop",
-  "Adobe Premiere",
-  "VPS Management (Linux)",
 ];
 export default function Home() {
   return (
@@ -69,7 +59,7 @@ export default function Home() {
         <div className="flex justify-center gap-2 lg:-mt-4">
           <Wrapper className=" font-poppins">
             <h1 className="text-lg font-bold">My Experience</h1>
-            <div className="grid grid-cols-3 gap-4 mt-4 lg:grid-cols-4">
+            <div className="flex flex-wrap gap-4 mt-4 ">
               {experiences.map((experience) => (
                 <Button
                   key={experience}

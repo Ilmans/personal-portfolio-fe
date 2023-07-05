@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ProfileCard from "./ProfileCard";
 import { usePathname } from "next/navigation";
 
@@ -9,6 +9,12 @@ interface NavigationProps {
 }
 function Navigation({ mobileMenuShow, setMobileMenuShow }: NavigationProps) {
   const currentRoute = usePathname();
+
+  useEffect(() => {
+    setMobileMenuShow(false);
+  }, [currentRoute]);
+
+  
 
   return (
     <div
