@@ -1,15 +1,21 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Input from "../../components/Input";
 import { redirect } from "next/navigation";
 import { config } from "../helpers";
 import { toast } from "react-toastify";
-import ValidateToken from "../middleware/ValidateToken";
+
+import useValidateLogin from "../../hook/useValidateLogin";
+import { useRouter } from "next/navigation";
 
 function PageLogin() {
-  if (ValidateToken) {
-    redirect("/");
-  }
+  const router = useRouter();
+  const isLogin = useValidateLogin();
+  useEffect(() => {
+    if (isLogin) {
+      router.push("/");
+    }
+  }, [isLogin]);
   const [data, setData] = useState({
     username: "",
     password: "",
@@ -39,7 +45,7 @@ function PageLogin() {
         }
         toast.success("login success, will redirect in one second");
         setTimeout(() => {
-          redirect("/manage/articles");
+          router.push("/manage/articles");
         }, 1000);
       })
       .catch((err) => {

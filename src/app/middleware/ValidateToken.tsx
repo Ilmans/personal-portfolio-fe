@@ -1,8 +1,15 @@
 import jwt from "jsonwebtoken";
+import { useEffect, useState } from "react";
 
 const ValidateToken = () => {
   // Ambil token dari local storage
-  const token: any = localStorage.getItem("token"); // Ubah 'token' dengan kunci penyimpanan yang sesuai
+  const [token, setToken] = useState(null);
+  useEffect(() => {
+    const token: any =
+      typeof window !== undefined ? localStorage.getItem("token") : null; // Ubah 'token' dengan kunci penyimpanan yang sesuai
+    setToken(token);
+  }, []);
+
   // Jika token tidak ditemukan atau kosong, pengguna dianggap tidak login
 
   if (!token) {

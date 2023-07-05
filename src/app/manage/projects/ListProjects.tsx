@@ -13,7 +13,7 @@ function ListProjects({ deleteProj, projects }) {
             <img
               height={200}
               width={300}
-              src={`${config.BACKEND_URL}/projects/${project.image}`}
+              src={`${config.BACKEND_URL}/uploads/${project.image}`}
               alt="sf"
             />
           </div>

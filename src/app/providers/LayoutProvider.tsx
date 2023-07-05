@@ -6,16 +6,9 @@ import { LoveIcon } from "../../components/Icon";
 import Sidebar from "../../components/Dashboard/Sidebar";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import ValidateToken from "../middleware/ValidateToken";
 function LayoutProvider({ children }) {
-  const pathname = usePathname();
-  if (pathname.includes("/manage")) {
-    const isLogin = ValidateToken();
+  
 
-    if (!isLogin) {
-      redirect("/login");
-    }
-  }
   // useEffect(() => {
   //   const currentTheme = localStorage.getItem("theme") || "dark";
   //   document.documentElement.classList.add(currentTheme);
@@ -30,15 +23,7 @@ function LayoutProvider({ children }) {
       <div className="px-6 pt-10 lg:pt-0 lg:px-32 ">
         <Header />
         <ToastContainer position={toast.POSITION.TOP_RIGHT} />
-        {pathname.includes("/manage") ? (
-          <main className="flex p-4 gap-x-12">
-            {/* <CheckLogin /> */}
-            <Sidebar />
-            <div className="w-3/4">{children}</div>
-          </main>
-        ) : (
-          children
-        )}
+        {children}
 
         <div className="my-12 text-center font-poppins">
           <p className="flex items-center gap-2 text-zinc-400">
