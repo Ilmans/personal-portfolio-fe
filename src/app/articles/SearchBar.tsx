@@ -45,13 +45,7 @@ function SearchBar({ setArticles, getArticles, articles, full = false }) {
               ))}
             </>
           ) : (
-            new Array(3)
-              .fill(1)
-              .map((i) => (
-                <li
-                  key={i}
-                  className={` w-24 h-2 rounded-lg animate-pulse bg-zinc-400`}></li>
-              ))
+            <>..</>
           )}
         </ul>
         <div className={`relative ${full ? "w-full" : "lg:w-2/3"} `}>

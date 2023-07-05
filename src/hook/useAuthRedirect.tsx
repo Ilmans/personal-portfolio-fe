@@ -1,8 +1,7 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
-import { RootState, store, useAppSelector } from "../redux/store";
+import { redirect, useRouter } from "next/navigation";
+import { RootState, store } from "../redux/store";
 import { useSelector } from "react-redux";
 import jwt from "jsonwebtoken";
 import { auth, logOut } from "../redux/features/auth-slice";
@@ -55,10 +54,15 @@ export function useAuthRedirect(redirectTo, requireLogin) {
     (state: any) => state.auth.value.user?.token
   );
 
-  const auntheticated = isAuth && !isTokenExpired(token);
-  if (requireLogin && !auntheticated) {
-    router.push(redirectTo); // Redirect jika memerlukan login tetapi belum login
-  } else if (!requireLogin && auntheticated) {
-    router.push(redirectTo); // Redirect jika tidak memerlukan login tetapi sudah login
+  const auntheticated = !isTokenExpired(token);
+
+  if (typeof location !== undefined) {
+    if (requireLogin && !auntheticated) {
+      redirect(redirectTo);
+      //router.push(redirectTo); // Redirect jika memerlukan login tetapi belum login
+    } else if (!requireLogin && auntheticated) {
+      redirect(redirectTo);
+      // router.push(redirectTo); // Redirect jika tidak memerlukan login tetapi sudah login
+    }
   }
 }

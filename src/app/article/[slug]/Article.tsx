@@ -43,7 +43,7 @@ function Article({ markdown }) {
             <div>
               <div className="z-50 flex items-center justify-between p-1 pb-5 -mb-6 text-xs rounded-lg dark:text-zinc-400 dark:bg-zinc-700">
                 <p>{match ? match[1] : "Bash"}</p>
-                <CopyToClipboard text={"tes"} onCopy={handleCopy}>
+                <CopyToClipboard text={children} onCopy={handleCopy}>
                   <div>
                     <ClipBoardIcon className="w-4 h-4 hover:text-white" />
                   </div>

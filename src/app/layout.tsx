@@ -3,7 +3,6 @@ import "./globals.css";
 import { Metadata } from "next";
 import ThemeProvider from "./providers/ThemeProvider";
 import LayoutProvider from "./providers/LayoutProvider";
-import { Provider } from "react-redux";
 import ReduxProvider from "./providers/ReduxProvider";
 
 export const metadata: Metadata = {
@@ -19,12 +18,12 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }) {
- 
   return (
+    // <html className="dark">
     <ThemeProvider>
-      <ReduxProvider>
+      {/* <ReduxProvider> */}
         <LayoutProvider>{children}</LayoutProvider>
-      </ReduxProvider>
+      {/* </ReduxProvider> */}
     </ThemeProvider>
   );
 }

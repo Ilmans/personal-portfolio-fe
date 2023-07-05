@@ -12,7 +12,7 @@ import {
   updateArticle,
 } from "../../../../lib/api";
 import { toast } from "react-toastify";
-import { useRouter } from "next/navigation";
+import { redirect } from "next/navigation";
 
 const validationSchema = yup.object().shape({
   title: yup.string().min(15).max(100).required(),
@@ -33,7 +33,6 @@ interface Props {
 function Form({ dataArticle = null }: Props) {
   console.log(dataArticle);
 
-  const router = useRouter();
   const token = useSelector<RootState>((state) => state.auth.value.user.token);
   const [errors, setErrors] = useState<any>({
     body: "",
@@ -72,7 +71,7 @@ function Form({ dataArticle = null }: Props) {
               "Article success created. You will be redirect to articles page in 2 second."
             );
             setTimeout(() => {
-              router.push("/manage/articles");
+              // redirect("/manage/articles");
             }, 1000);
 
             setProcessing(false);
@@ -108,7 +107,7 @@ function Form({ dataArticle = null }: Props) {
             if ("errors" in res) alert(res.errors);
             toast.success("Article success updated. ");
 
-            router.push("/manage/articles");
+           // redirect("/manage/articles");
 
             setProcessing(false);
           })

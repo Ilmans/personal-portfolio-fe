@@ -26,6 +26,8 @@ const experiences = [
   "VPS Management (Linux)",
 ];
 export default function Home() {
+  console.log("ah");
+  
   return (
     <main className="flex justify-center gap-4 mt-4">
       <ProfileCard className="hidden lg:w-2/7 lg:block" />

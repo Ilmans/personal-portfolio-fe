@@ -15,7 +15,7 @@ function ProfileCard({ className = "border-b-0" }: { className: any }) {
       </div>
       <div className="my-4 text-center">
         <h1 className="text-2xl font-bold tracking-wider text-center">
-          Hy! I'm Ilman S
+          Hy! I&apos;m Ilman S
         </h1>
         <p className="font-light text-teal-300 animate-typing f text--green-600">
           Full Stack Developer

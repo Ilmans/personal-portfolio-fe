@@ -1,32 +1,45 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 // import { useTheme } from "next-themes";
 
 function ThemeSwitcher() {
   //const { theme, setTheme } = useTheme();
-  const currentTheme: string = localStorage.getItem("theme");
-  const [theme, setTheme] = useState(currentTheme);
+  const [currentTheme, setCurrentTheme] = useState("dark");
+
+  useEffect(() => {
+    const currentTheme = localStorage.getItem("theme") || "dark";
+    if (currentTheme) {
+      setCurrentTheme(currentTheme);
+    }
+  }, []);
+
   const handleThemeChange = (newTheme) => {
-    setTheme(newTheme);
+    setCurrentTheme(newTheme);
     if (typeof window !== "undefined") {
       localStorage.setItem("theme", newTheme);
-      document.documentElement.classList.remove(theme);
+
+      document.documentElement.classList.remove(currentTheme);
       document.documentElement.classList.add(newTheme);
     }
   };
+
   return (
     <div className="flex items-center gap-4 p-2 transition-all border rounded-lg border-zinc-300 hover:border-gray-600">
       <div className="items-center hidden font-normal lg:flex">
         <span
-          className={`align-middle ${theme === "dark" ? "text-teal-300" : ""}`}>
+          className={`align-middle ${
+            currentTheme === "dark" ? "text-teal-300" : ""
+          }`}>
           Dark/
         </span>{" "}
         <span
-          className={`align-middle ${theme === "dark" ? "" : "text-teal-300"}`}>
+          className={`align-middle ${
+            currentTheme === "dark" ? "" : "text-teal-300"
+          }`}>
           Light
         </span>
       </div>
-      {theme == "dark" ? (
+      {currentTheme === "dark" ? (
         <MoonIcon handleThemeChange={handleThemeChange} />
       ) : (
         <SunIcon handleThemeChange={handleThemeChange} />
@@ -34,6 +47,8 @@ function ThemeSwitcher() {
     </div>
   );
 }
+
+// Komponen MoonIcon dan SunIcon tetap sama
 function SunIcon({ handleThemeChange }: { handleThemeChange: any }) {
   return (
     <svg
@@ -74,4 +89,5 @@ function MoonIcon({ handleThemeChange }: { handleThemeChange: any }) {
     </svg>
   );
 }
+
 export default ThemeSwitcher;

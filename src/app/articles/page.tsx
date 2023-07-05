@@ -1,5 +1,4 @@
-"use client";
-import React, { Suspense, useEffect, useState } from "react";
+import React, { Suspense } from "react";
 import Jumbotron from "../../components/Jumbotron";
 import Wrapper from "../../components/Wrapper";
 
@@ -10,38 +9,9 @@ import {
 } from "../../components/SocialIcon";
 
 import PopularArticle from "../../components/PopularArticle";
-import List from "./List";
-import SearchBar from "./SearchBar";
-import Pagination from "../../components/Pagination";
-import { config } from "../helpers";
-import { getArticles } from "../../lib/api";
+import PageArticles from "./PageArticles";
 
-
-
-
-function Page() {
-  const [articles, setArticles] = useState(null);
-  const [meta, setMeta] = useState(null);
-  const [fatalError, setFatalError] = useState(false);
-  useEffect(() => {
-    getArticles()
-      .then((res) => {
-        setArticles(res.data);
-        setMeta(res.paging);
-      })
-      .catch(() => {
-        setFatalError(true);
-      });
-  }, []);
-
-  const onPageChange = (toPage) => {
-    setArticles(null);
-    getArticles(toPage).then((res) => {
-      setArticles(res.data);
-      setMeta(res.paging);
-    });
-  };
-
+function page() {
   return (
     <div className="gap-4 lg:flex">
       <div className="lg:w-4/5">
@@ -51,34 +21,7 @@ function Page() {
           }
           description="All of my long-form thoughts on programming, design, and more, collected in chronological order."
         />
-        <Suspense fallback={<>Loadin..</>}>
-          <SearchBar
-            articles={articles}
-            setArticles={setArticles}
-            getArticles={getArticles}
-          />
-        </Suspense>
-        {fatalError ? (
-          <div className="flex flex-col mt-12">
-            <h2 className="font-bold font-poppins">Filed load articles</h2>
-            <p>Please try to refresh page</p>
-          </div>
-        ) : (
-          <>
-            {articles === null ? (
-              <p>getting articles..</p>
-            ) : (
-              <List articles={articles} />
-            )}
-          </>
-        )}
-        {meta !== null && articles !== null && articles.length !== 0 && (
-          <Pagination
-            totalPages={meta.total_page}
-            onPageChange={onPageChange}
-            currentPage={meta.page}
-          />
-        )}
+        <PageArticles />
       </div>
       <div className="lg:w-1/5">
         <Wrapper>
@@ -111,6 +54,6 @@ function Page() {
       </div>
     </div>
   );
-};
+}
 
-export default Page;
+export default page;

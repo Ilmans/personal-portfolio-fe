@@ -1,12 +1,8 @@
-"use client";
 import React, { Fragment } from "react";
 import HeadSection from "../../../../components/Dashboard/HeadSection";
-import Form from "../../articles/create/Form";
 import FormProject from "./FormProject";
-import { useAuthRedirect } from "../../../../hook/useAuthRedirect";
 
-function Page() {
-  useAuthRedirect("/login", true);
+function page() {
   return (
     <Fragment>
       <HeadSection
@@ -21,4 +17,4 @@ function Page() {
   );
 }
 
-export default Page;
+export default page;

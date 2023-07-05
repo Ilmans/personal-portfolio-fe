@@ -52,7 +52,9 @@ function Projects({ projects }) {
             <div className="flex items-center justify-between mt-2">
               <button
                 onClick={() => {
-                  window.open(project.url, "_blank");
+                  if (typeof window !== undefined) {
+                    window.open(project.url, "_blank");
+                  }
                 }}
                 className="flex items-center gap-1 text-xs hover:text-teal-300">
                 <svg

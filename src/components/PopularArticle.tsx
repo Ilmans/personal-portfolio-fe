@@ -1,32 +1,44 @@
-import Link from "next/link";
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import { config } from "../app/helpers";
+import Link from "next/link";
 
-const getPopularArticles = async () => {
-  const res = await fetch(`${config.BACKEND_URL}/articles/popular`, {
-    cache: "default",
-  });
-  return res.json();
-};
-const PopularArticle: any = React.memo(() => {
-  let fatalErrors = false;
-  let articles: any;
-  const getArt = getPopularArticles()
-    .then((res) => {
-      articles = res.data;
-    })
-    .catch(() => {
-      fatalErrors = true;
-    });
-  if (fatalErrors) {
+const PopularArticle = () => {
+  const [articles, setArticles] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    const getPopularArticles = async () => {
+      try {
+        const res = await fetch(`${config.BACKEND_URL}/articles/popular`, {
+          cache: "default",
+        });
+        const data = await res.json();
+        setArticles(data.data);
+      } catch (error) {
+        setError(true);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    getPopularArticles();
+  }, []);
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
     return (
-      <p className="text-xs text-zinc-400">Failed load populer articles</p>
+      <p className="text-xs text-zinc-400">Failed to load popular articles</p>
     );
   }
 
   return (
     <ul className="mt-4 space-y-2 text-xs">
-      {articles.data.map((article, i) => (
+      {articles.map((article, i) => (
         <li key={i} className="hover:text-teal-300">
           <Link
             href={"/article/" + article.slug}
@@ -51,6 +63,6 @@ const PopularArticle: any = React.memo(() => {
       ))}
     </ul>
   );
-});
+};
 
 export default PopularArticle;
