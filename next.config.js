@@ -5,6 +5,7 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+
   eslint: {
     ignoreDuringBuilds: true,
   },
@@ -14,6 +15,7 @@ const nextConfig = {
   images: {
     domains: ["loremflickr.com", "localhost"],
   },
+  distDir : 'build',
   removeImports,
 };
 
