@@ -3,7 +3,6 @@ import "./globals.css";
 import { Metadata } from "next";
 import ThemeProvider from "./providers/ThemeProvider";
 import LayoutProvider from "./providers/LayoutProvider";
-import ReduxProvider from "./providers/ReduxProvider";
 
 export const metadata: Metadata = {
   title: {

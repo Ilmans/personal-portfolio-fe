@@ -8,13 +8,19 @@ function PagePortfolio() {
   const [projects, setProjects] = useState(null);
   const [meta, setMeta] = useState(null);
   const [fatalError, setFatalError] = useState(false);
+console.log(process.env.BACKEND_URL);
+
+  
   useEffect(() => {
+    
+    
     getProjects()
       .then((res) => {
         setProjects(res.data);
         setMeta(res.paging);
       })
-      .catch(() => {
+      .catch((e) => {
+    
         setFatalError(true);
       });
   }, []);

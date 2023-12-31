@@ -1,3 +1,5 @@
+
+
 export function getDomain(url: String): String {
   let domain = url;
 
@@ -22,7 +24,8 @@ export const formateDateForDisplay = (dateString: string) => {
   });
 };
 
+
 export const config = {
-  BACKEND_URL: "http://localhost:3120",
+  BACKEND_URL: process.env.BACKEND_URL,
 };
 

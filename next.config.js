@@ -5,6 +5,9 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  env: {
+    BACKEND_URL: process.env.BACKEND_URL,
+  },
 
   eslint: {
     ignoreDuringBuilds: true,
@@ -13,10 +16,12 @@ const nextConfig = {
     styledComponents: true,
   },
   images: {
+    unoptimized: true,
     domains: ["loremflickr.com", "localhost"],
   },
-  distDir : 'build',
+  output: "export",
+  distDir: "build",
   removeImports,
 };
 
-module.exports = nextConfig
+module.exports = nextConfig;

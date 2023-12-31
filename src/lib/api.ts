@@ -1,5 +1,7 @@
 import { notFound } from "next/navigation";
 import { config } from "../app/helpers";
+// import dotenv from "dotenv";
+
 
 export const getArticles = async (page = 1, searchTerms = "") => {
   const res = await fetch(

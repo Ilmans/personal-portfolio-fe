@@ -8,6 +8,8 @@ import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
 function Projects({ projects }) {
   const [whichShow, setWhichShow] = useState(null);
+
+  
   return (
     <div className="grid grid-cols-1 gap-4 mt-6 lg:grid-cols-3">
       {whichShow !== null && (

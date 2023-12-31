@@ -3,6 +3,7 @@ import Jumbotron from "../../components/Jumbotron";
 import PagePortfolio from "./PagePortfolio";
 
 function page() {
+
   return (
     <div className="lg:w-5/7 ">
       <Jumbotron
