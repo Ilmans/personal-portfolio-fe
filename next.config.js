@@ -1,6 +1,4 @@
 /** @type {import('next').NextConfig} */
-const removeImports = require("next-remove-imports")();
-
 const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
@@ -19,9 +17,7 @@ const nextConfig = {
     unoptimized: true,
     domains: ["loremflickr.com", "localhost"],
   },
-  output: "export",
   distDir: "build",
-  removeImports,
 };
 
 module.exports = nextConfig;
