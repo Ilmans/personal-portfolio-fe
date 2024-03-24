@@ -21,12 +21,12 @@ export default function Home() {
       <ProfileCard className="hidden lg:w-2/7 lg:block" />
       <div className="lg:w-5/7 ">
         <Wrapper>
-          <div className="flex flex-col justify-center gap-2 lg:flex-row">
-            <div className="w-full lg:w-1/2">
+          <div className="flex-col justify-center gap-2 lg:flex-row">
+            {/* <div className="w-full lg:w-1/2">
               <img src="/img/about.png" alt="" />
-            </div>
+            </div> */}
 
-            <div className="w-full px-4 py-4 lg:py-12 lg:w-1/2 font-poppins">
+            <div className="w-full px-4 py-4 lg:py-12  font-poppins">
               <div className="relative flex items-center gap-2 text-xl font-normal z-1 ">
                 <p className="text-teal-300 ">{`> ~ %`}</p>
                 <p className="text-zinc-400">
