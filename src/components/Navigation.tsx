@@ -34,7 +34,7 @@ function Navigation({ mobileMenuShow, setMobileMenuShow }: NavigationProps) {
         <NavLi
           active={currentRoute === "/portfolio"}
           url={"/portfolio"}
-          text={"Portfolio"}
+          text={"Projects"}
         />
 
         <NavLi

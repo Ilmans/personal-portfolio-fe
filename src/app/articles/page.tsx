@@ -17,7 +17,7 @@ function page() {
       <div className="lg:w-4/5">
         <Jumbotron
           title={
-            "Menulis tentang opini saya tentang program komputer,code,design, personal dan teknik teknik"
+            "Menulis opini saya tentang program komputer,code,design, personal dan teknik teknik"
           }
           description="Salah satu cara agar mudah mengingat kembali sesuatu yang lupa adalah dengan menulisnya. tulisan sendiri akan lebih mudah di cari dan dipahami. Saya menulis apapun disini termasuk hal hal kecil yang bermanfaat bagi saya,dan mungkin buat orang lain."
         />
